@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sampreeth & Medini Wedding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+      /* SIMPLE BACKGROUND DESIGN: Subtle gold pattern on white */
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0l-4 40 4 40 4-40z' fill='%23d4af37' fill-opacity='0.03'/%3E%3Cpath d='M0 40l40-4 40 4-40 4z' fill='%23d4af37' fill-opacity='0.03'/%3E%3C/svg%3E");
+      color: #4a4a4a;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      text-align: center;
+      padding: 90px 20px 50px;
+      /* Soft White/Champagne Gradient */
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fdf9f0 100%);
+      color: #9c7e2d;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.1) 0%, transparent 55%),
+        radial-gradient(ellipse at 0% 100%, rgba(212,175,55,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, rgba(212,175,55,0.05) 0%, transparent 50%);
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent);
+    }
+
+    .header-bottom-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent);
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      color: #9c7e2d; /* Gold Text */
+      text-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 12px;
+      animation: floatText 4s ease-in-out infinite;
+    }
+
+    header p {
+      font-size: 0.8rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #bca05a;
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes floatText {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      text-align: center;
+      color: #9c7e2d;
+      margin-bottom: 6px;
+    }
+
+    /* ── DIVIDER: three dots ── */
+    .section-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .section-line .seg {
+      height: 1px;
+      width: 55px;
+      background: #c8973a;
+      opacity: 0.4;
+    }
+
+    .section-line .dot-group {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .section-line .dot-group span {
+      display: block;
+      border-radius: 50%;
+      background: #c8973a;
+      opacity: 0.7;
+    }
+
+    .section-line .dot-group span.sm  { width: 4px; height: 4px; }
+    .section-line .dot-group span.md  { width: 6px; height: 6px; opacity: 1; }
+
+    /* ── LOVE STORY ── */
+    .love-story {
+      background: rgba(255, 255, 255, 0.8);
+      max-width: 100%;
+      border-top: 1px solid rgba(200,151,58,0.2);
+      border-bottom: 1px solid rgba(200,151,58,0.2);
+    }
+
+    .love-story .inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+
+    .love-story p {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #5a5a5a;
+      max-width: 700px;
+      margin: auto;
+      line-height: 2;
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-section {
+      text-align: center;
+      background: #fdfaf4;
+      max-width: 100%;
+      padding: 40px 20px;
+      border-bottom: 1px solid rgba(200,151,58,0.1);
+    }
+
+    .countdown-section h2 { color: #9c7e2d; }
+
+    .countdown {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #9c7e2d;
+      letter-spacing: 1px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #ffffff;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9c7e2d;
+      border-top: 1px solid rgba(200,151,58,0.1);
+    }
+
+    footer span { color: #c8973a; }
+
+    /* ── TOP NAV BAR ── */
+    .top-nav {
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      padding: 10px 20px;
+      border-bottom: 1px solid rgba(200,151,58,0.1);
+    }
+
+    .top-nav a {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9c7e2d;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .top-nav a:hover { color: #d4af37; }
+
+    @media (max-width: 768px) {
+      header h1  { font-size: 2.8rem; }
+      h2         { font-size: 2.2rem; }
+      .countdown { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="events.html">Events</a>
+  <a href="rsvp.html">RSVP</a>
+  <a href="memories.html">Memories</a>
+</nav>
+
+<header>
+  <h1>Sampreeth &amp; Medini</h1>
+  <p>We Are Getting Married!</p>
+  <div class="header-bottom-bar"></div>
+</header>
+
+<div class="love-story">
+  <div class="inner">
+    <h2>Our Love Story</h2>
+    <div class="section-line">
+      <div class="seg"></div>
+      <div class="dot-group">
+        <span class="sm"></span>
+        <span class="md"></span>
+        <span class="sm"></span>
+      </div>
+      <div class="seg"></div>
+    </div>
+    <p>
+      What started as a game of fun for his friends turned us in to couple. Late night talks , 
+      looking in to each others in classroom, walking through our stories , yes it started spark in both 
+      of us . Unknowingly both started planting seeds in each other hearts which has grown in to a huge
+      tree now , not just a tree but a fruitful one . Now we have planned to celebrate this relationship 
+      with our culture through ‘Gandharva Vivaha’. Lets celebrate this together
+    </p>
+  </div>
+</div>
+
+<div class="countdown-section">
+  <h2>Countdown to Our Wedding</h2>
+  <div class="section-line">
+    <div class="seg"></div>
+    <div class="dot-group">
+      <span class="sm"></span>
+      <span class="md"></span>
+      <span class="sm"></span>
+    </div>
+    <div class="seg"></div>
+  </div>
+  <div class="countdown" id="countdown"></div>
+</div>
+
+<footer>
+  With <span>♥</span> from Sampreeth &amp; Medini &nbsp;·&nbsp; December 2026
+</footer>
+
+<script>
+  const weddingDate = new Date("December 4, 2026 09:00:00").getTime();
+  const countdownEl = document.getElementById("countdown");
+
+  function updateCountdown() {
+    const distance = weddingDate - Date.now();
+    if (distance < 0) {
+      countdownEl.innerHTML = "Our Wedding Day is Here! 🎉";
+      return;
+    }
+    const days    = Math.floor(distance / 86400000);
+    const hours   = Math.floor((distance % 86400000) / 3600000);
+    const minutes = Math.floor((distance % 3600000) / 60000);
+    const seconds = Math.floor((distance % 60000) / 1000);
+    countdownEl.innerHTML = `${days} Days &nbsp;·&nbsp; ${hours} Hours &nbsp;·&nbsp; ${minutes} Minutes &nbsp;·&nbsp; ${seconds} Seconds`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+</body>
+</html>

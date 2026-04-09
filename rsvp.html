@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSVP · Sampreeth & Medini</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0l-4 40 4 40 4-40z' fill='%23d4af37' fill-opacity='0.03'/%3E%3Cpath d='M0 40l40-4 40 4-40 4z' fill='%23d4af37' fill-opacity='0.03'/%3E%3C/svg%3E");
+      color: #4a4a4a;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── TOP NAV BAR ── */
+    .top-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 32px;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    .nav-logo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      color: #9c7e2d;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-link {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9c7e2d;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: #d4af37;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover { color: #d4af37; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ── HERO SECTION ── */
+    header.hero {
+      position: relative;
+      text-align: center;
+      padding: 130px 20px 100px;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fdf9f0 100%);
+      color: #9c7e2d;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header.hero::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.1) 0%, transparent 55%),
+                  radial-gradient(ellipse at 0% 100%, rgba(212,175,55,0.05) 0%, transparent 50%),
+                  radial-gradient(ellipse at 100% 100%, rgba(212,175,55,0.05) 0%, transparent 50%);
+    }
+
+    .hero-ornament { position: absolute; width: 150px; height: 150px; opacity: 0.1; z-index: 1; color: #d4af37; }
+    .ornament-tl { top: 20px; left: 20px; }
+    .ornament-tr { top: 20px; right: 20px; transform: rotate(90deg); }
+
+    .header-bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent); }
+
+    header.hero h1 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: #9c7e2d; text-shadow: 0 2px 10px rgba(0,0,0,0.05); animation: floatText 4s ease-in-out infinite; z-index: 2; }
+    header.hero p { font-size: 0.85rem; letter-spacing: 7px; text-transform: uppercase; color: #bca05a; animation: fadeIn 1.5s ease forwards; z-index: 2; }
+
+    @keyframes floatText { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── RSVP FORM SECTION ── */
+    .rsvp-container {
+      max-width: 600px;
+      margin: -50px auto 80px;
+      padding: 40px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.15);
+      position: relative;
+      z-index: 10;
+    }
+
+    .rsvp-form-group { margin-bottom: 25px; }
+    label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #9c7e2d; margin-bottom: 8px; font-weight: 600; }
+    
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 8px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      background-color: #fffcf7;
+    }
+
+    input:focus { outline: none; border-color: #c8973a; }
+
+    .rsvp-button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #c8973a 0%, #9c7e2d 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .rsvp-button:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(200,151,58,0.3); }
+
+    /* ── SUCCESS MESSAGES ── */
+    #message-box { display: none; text-align: center; padding: 20px; animation: fadeIn 1s ease; }
+    .msg-title { font-family: 'Great Vibes', cursive; font-size: 3rem; color: #9c7e2d; margin-bottom: 10px; }
+    .msg-text { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: #5a5a5a; }
+
+    footer { background: #ffffff; text-align: center; padding: 40px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #9c7e2d; border-top: 1px solid rgba(212,175,55,0.1); }
+    footer span { color: #c8973a; }
+
+    @media (max-width: 768px) {
+      header.hero h1 { font-size: 3.2rem; }
+      .top-nav { padding: 12px 16px; }
+      .nav-links { gap: 12px; }
+      .nav-link { font-size: 0.58rem; letter-spacing: 1px; }
+      .rsvp-container { margin: 20px; padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">S & M</a>
+  <div class="nav-links">
+    <a href="main.html" class="nav-link">Home</a>
+    <a href="events.html" class="nav-link">Events</a>
+    <a href="memories.html" class="nav-link">Memories</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="hero-ornament ornament-tl" viewBox="0 0 100 100"><path d="M0 0 Q 50 0 50 50 L 0 50 Z" fill="currentColor"/><path d="M10 0 Q 60 10 60 60" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  <svg class="hero-ornament ornament-tr" viewBox="0 0 100 100"><path d="M0 0 Q 50 0 50 50 L 0 50 Z" fill="currentColor"/><path d="M10 0 Q 60 10 60 60" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  
+  <h1>Will You Join Us?</h1>
+  <p>Kindly RSVP by Nov 15</p>
+  
+  <div class="header-bottom-bar"></div>
+</header>
+
+<div class="rsvp-container">
+  <form id="rsvpForm">
+    <div class="rsvp-form-group">
+      <label for="guest-name">Full Name</label>
+      <input type="text" id="guest-name" name="guestName" placeholder="Enter your name" required>
+    </div>
+
+    <div class="rsvp-form-group">
+      <label for="attending">Will you be attending?</label>
+      <select id="attending" name="isAttending" required>
+        <option value="" disabled selected>Please select...</option>
+        <option value="yes">Yes, I'll be there!</option>
+        <option value="no">Sorry, I can't make it</option>
+      </select>
+    </div>
+
+    <div class="rsvp-form-group" id="guest-count-group">
+      <label for="guests">Number of Guests</label>
+      <input type="number" id="guests" name="guestCount" min="1" max="10" value="1">
+    </div>
+
+    <button type="submit" class="rsvp-button" id="submitBtn">Send Response</button>
+  </form>
+
+  <div id="message-box">
+    <div id="success-icon" style="font-size: 3rem; margin-bottom: 15px;">✨</div>
+    <div class="msg-title" id="response-title">Thank You!</div>
+    <p class="msg-text" id="response-text"></p>
+    <br>
+    <a href="main.html" style="color: #c8973a; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; text-decoration: none;">Return to Home</a>
+  </div>
+</div>
+
+<footer>
+  With <span>♥</span> from Sampreeth & Medini  ·  December 2026
+</footer>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzK6mvjLIfnOcz5c1BkbtZ1c8pWyBvR5yt7gLN5U_5QzeCCy9y75YwsjNGWf-qjn6epLQ/exec'; // Replace this!
+  const form = document.getElementById('rsvpForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const messageBox = document.getElementById('message-box');
+  const responseTitle = document.getElementById('response-title');
+  const responseText = document.getElementById('response-text');
+  const attendingSelect = document.getElementById('attending');
+  const guestGroup = document.getElementById('guest-count-group');
+
+  // Show/Hide guest count based on attendance
+  attendingSelect.addEventListener('change', () => {
+    guestGroup.style.display = attendingSelect.value === 'no' ? 'none' : 'block';
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Change button text to show it's working
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Sending...";
+
+    const name = document.getElementById('guest-name').value;
+    const status = attendingSelect.value;
+
+    // Send the data to Google Apps Script
+    fetch(scriptURL, { 
+      method: 'POST', 
+      body: new FormData(form)
+    })
+    .then(response => {
+      form.style.display = 'none';
+      messageBox.style.display = 'block';
+
+      if (status === 'yes') {
+        responseTitle.innerText = "Joyful News!";
+        responseText.innerText = `We are so excited to celebrate with you, ${name}! Your presence will make our day truly special. See you in December!`;
+      } else {
+        responseTitle.innerText = "We'll Miss You!";
+        responseText.innerText = `Thank you for letting us know, ${name}. We are sorry you can't join us, but we'll be thinking of you!`;
+      }
+    })
+    .catch(error => {
+      console.error('Error!', error.message);
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Send Response";
+      alert("Something went wrong. Please try again or contact us directly!");
+    });
+  });
+</script>
+
+</body>
+</html>
