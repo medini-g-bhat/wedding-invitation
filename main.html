@@ -16,13 +16,13 @@
       line-height: 1.6;
     }
 
-    /* ── ENHANCED NAVIGATION ── */
+    /* ── UPDATED NAVIGATION: DESKTOP & MOBILE ── */
     .top-nav {
       background: rgba(255, 255, 255, 0.98);
       display: flex;
       justify-content: center;
       gap: 15px;
-      padding: 20px;
+      padding: 15px 10px; /* Reduced padding for mobile safety */
       border-bottom: 1px solid rgba(200,151,58,0.2);
       position: sticky;
       top: 0;
@@ -32,44 +32,23 @@
 
     .top-nav a {
       font-size: 0.75rem;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      color: #ffffff; /* White text on gold background */
+      color: #ffffff;
       text-decoration: none;
-      padding: 12px 28px;
+      padding: 10px 18px; /* Adjusted padding */
       border-radius: 50px;
-      /* Rich Gold Gradient Background */
       background: linear-gradient(135deg, #e2b96a 0%, #c8973a 100%);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.3s ease;
       font-weight: 600;
-      box-shadow: 0 4px 15px rgba(200, 151, 58, 0.3);
+      box-shadow: 0 4px 12px rgba(200, 151, 58, 0.2);
       border: none;
+      white-space: nowrap; /* Prevents text from breaking into two lines */
     }
 
-    .top-nav a:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(200, 151, 58, 0.5);
-      background: linear-gradient(135deg, #c8973a 0%, #9c7e2d 100%);
-    }
-
-    /* RSVP Specific Bold Design */
+    /* RSVP Bold Design */
     .top-nav a[href="rsvp.html"] {
       background: linear-gradient(135deg, #b8860b 0%, #8b6508 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Subtle Shine Effect for RSVP */
-    .top-nav a[href="rsvp.html"]::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: rgba(255,255,255,0.1);
-      transform: rotate(45deg);
-      transition: 0.5s;
     }
 
     /* ── HEADER ── */
@@ -82,107 +61,46 @@
       overflow: hidden;
     }
 
-    header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.1) 0%, transparent 55%),
-        radial-gradient(ellipse at 0% 100%, rgba(212,175,55,0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 100% 100%, rgba(212,175,55,0.05) 0%, transparent 50%);
-    }
-
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent);
-    }
-
-    .header-bottom-bar {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent);
-    }
-
     header h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 4rem;
       color: #9c7e2d;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.05);
       margin-bottom: 12px;
       animation: floatText 4s ease-in-out infinite;
-      position: relative;
-      z-index: 1;
     }
 
-    header p {
-      font-size: 0.8rem;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      color: #bca05a;
-      animation: fadeIn 1.5s ease forwards;
-      opacity: 0;
-      position: relative;
-      z-index: 1;
+    /* ── MOBILE VIEW FIX ── */
+    @media (max-width: 480px) {
+      .top-nav {
+        gap: 8px; /* Tighter gap for small screens */
+      }
+      .top-nav a {
+        padding: 8px 12px; /* Smaller buttons on mobile */
+        font-size: 0.6rem;
+        letter-spacing: 0.5px;
+      }
+      header h1 {
+        font-size: 2.8rem; /* Smaller title for mobile */
+      }
+      .love-story p {
+        font-size: 1.1rem; /* Better readability on phones */
+      }
     }
 
+    /* Keep your existing animations and story styles below */
     @keyframes floatText {
       0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-8px); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── SECTIONS ── */
-    h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.8rem;
-      text-align: center;
-      color: #9c7e2d;
-      margin-bottom: 6px;
-    }
-
-    .section-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 28px;
-    }
-
-    .section-line .seg {
-      height: 1px; width: 55px;
-      background: #c8973a; opacity: 0.4;
-    }
-
-    .section-line .dot-group span {
-      display: block; border-radius: 50%;
-      background: #c8973a;
-    }
-    .section-line .dot-group span.sm { width: 4px; height: 4px; opacity: 0.5; }
-    .section-line .dot-group span.md { width: 6px; height: 6px; opacity: 1; }
-
-    /* ── LOVE STORY ── */
-    .love-story {
-      background: rgba(255, 255, 255, 0.8);
-      border-top: 1px solid rgba(200,151,58,0.2);
-      border-bottom: 1px solid rgba(200,151,58,0.2);
+      50% { transform: translateY(-8px); }
     }
 
     .love-story .inner {
       max-width: 1100px;
       margin: auto;
       padding: 50px 20px;
+      text-align: center;
     }
 
     .love-story p {
-      text-align: center;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 1.25rem;
@@ -192,39 +110,23 @@
       line-height: 2;
     }
 
-    /* ── COUNTDOWN ── */
     .countdown-section {
       text-align: center;
       background: #fdfaf4;
       padding: 40px 20px;
-      border-bottom: 1px solid rgba(200,151,58,0.1);
     }
 
     .countdown {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       color: #9c7e2d;
-      letter-spacing: 1px;
     }
 
-    /* ── FOOTER ── */
     footer {
-      background: #ffffff;
       text-align: center;
-      padding: 30px 20px;
+      padding: 30px;
       font-size: 0.7rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
       color: #9c7e2d;
-      border-top: 1px solid rgba(200,151,58,0.1);
-    }
-
-    footer span { color: #d44c4c; }
-
-    @media (max-width: 768px) {
-      header h1  { font-size: 2.8rem; }
-      .top-nav { gap: 8px; padding: 12px; }
-      .top-nav a { padding: 10px 15px; font-size: 0.6rem; letter-spacing: 1px; }
     }
   </style>
 </head>
@@ -232,75 +134,53 @@
 
 <nav class="top-nav">
   <a href="events.html">Events</a>
-  <a href="rsvp.html">RSVP Now</a>
+  <a href="rsvp.html">RSVP</a>
   <a href="memories.html">Memories</a>
 </nav>
 
 <header>
   <h1>Sampreeth &amp; Medini</h1>
   <p>We Are Getting Married!</p>
-  <div class="header-bottom-bar"></div>
 </header>
 
 <div class="love-story">
   <div class="inner">
     <h2>Our Love Story</h2>
-    <div class="section-line">
-      <div class="seg"></div>
-      <div class="dot-group">
-        <span class="sm"></span>
-        <span class="md"></span>
-        <span class="sm"></span>
-      </div>
-      <div class="seg"></div>
-    </div>
     <p>
       What started as a game of fun for his friends turned us into a couple. Late night talks, 
       looking into each other in the classroom, walking through our stories—yes, it started a spark in both 
       of us. Unknowingly, both started planting seeds in each other's hearts which has grown into a huge
-      tree now, not just a tree but a fruitful one. Now we have planned to celebrate this relationship 
-      with our culture through ‘Gandharva Vivaha’. Let's celebrate this together.
+      tree now. Let's celebrate this together.
     </p>
   </div>
 </div>
 
 <div class="countdown-section">
   <h2>Countdown to Our Wedding</h2>
-  <div class="section-line">
-    <div class="seg"></div>
-    <div class="dot-group">
-      <span class="sm"></span>
-      <span class="md"></span>
-      <span class="sm"></span>
-    </div>
-    <div class="seg"></div>
-  </div>
-  <div class="countdown" id="countdown"></div>
+  <div id="countdown" class="countdown"></div>
 </div>
 
 <footer>
-  With <span>♥</span> from Sampreeth &amp; Medini &nbsp;·&nbsp; December 2026
+  With ♥ from Sampreeth &amp; Medini · December 2026
 </footer>
 
 <script>
   const weddingDate = new Date("December 4, 2026 09:00:00").getTime();
-  const countdownEl = document.getElementById("countdown");
-
   function updateCountdown() {
     const distance = weddingDate - Date.now();
     if (distance < 0) {
-      countdownEl.innerHTML = "Our Wedding Day is Here! 🎉";
+      document.getElementById("countdown").innerHTML = "Our Wedding Day is Here! 🎉";
       return;
     }
-    const days    = Math.floor(distance / 86400000);
-    const hours   = Math.floor((distance % 86400000) / 3600000);
+    const days = Math.floor(distance / 86400000);
+    const hours = Math.floor((distance % 86400000) / 3600000);
     const minutes = Math.floor((distance % 3600000) / 60000);
     const seconds = Math.floor((distance % 60000) / 1000);
-    countdownEl.innerHTML = `${days} Days &nbsp;·&nbsp; ${hours} Hours &nbsp;·&nbsp; ${minutes} Minutes &nbsp;·&nbsp; ${seconds} Seconds`;
+    document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
-
   setInterval(updateCountdown, 1000);
   updateCountdown();
 </script>
+
 </body>
 </html>
