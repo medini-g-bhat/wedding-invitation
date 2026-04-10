@@ -17,62 +17,58 @@
       min-height: 100vh;
     }
 
-    /* ── TOP NAV BAR ── */
+    /* ── TOP NAV BAR (Non-sticky, Buttons Right) ── */
     .top-nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: relative;
       z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 32px;
       background: #ffffff;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      border-bottom: 1px solid rgba(200,151,58,0.1);
       box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
 
     .nav-logo {
       font-family: 'Great Vibes', cursive;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       color: #9c7e2d;
       text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 15px;
     }
 
-    .nav-link {
-      font-size: 0.65rem;
+    .nav-button {
+      font-size: 0.7rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #9c7e2d;
+      background: linear-gradient(145deg, #bf953f, #9c7e2d); 
+      color: #ffffff;
       text-decoration: none;
-      transition: all 0.3s ease;
+      padding: 10px 25px;
+      border-radius: 50px;
+      border: 1px solid #9c7e2d;
       font-weight: 600;
-      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 12px rgba(156, 126, 45, 0.25);
+      display: inline-block;
     }
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: -4px;
-      left: 0;
-      background-color: #d4af37;
-      transition: width 0.3s ease;
+    .nav-button:hover {
+      background: linear-gradient(145deg, #9c7e2d, #7a5f1d);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 18px rgba(156, 126, 45, 0.4);
     }
-
-    .nav-link:hover { color: #d4af37; }
-    .nav-link:hover::after { width: 100%; }
 
     /* ── HERO SECTION ── */
     header.hero {
       position: relative;
       text-align: center;
-      padding: 130px 20px 100px;
+      padding: 80px 20px 80px;
       background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fdf9f0 100%);
       color: #9c7e2d;
       overflow: hidden;
@@ -155,9 +151,7 @@
 
     @media (max-width: 768px) {
       header.hero h1 { font-size: 3.2rem; }
-      .top-nav { padding: 12px 16px; }
-      .nav-links { gap: 12px; }
-      .nav-link { font-size: 0.58rem; letter-spacing: 1px; }
+      .top-nav { padding: 12px 15px; flex-direction: column; gap: 15px; }
       .rsvp-container { margin: 20px; padding: 25px; }
     }
   </style>
@@ -167,9 +161,9 @@
 <nav class="top-nav">
   <a href="index.html" class="nav-logo">S & M</a>
   <div class="nav-links">
-    <a href="main.html" class="nav-link">Home</a>
-    <a href="events.html" class="nav-link">Events</a>
-    <a href="memories.html" class="nav-link">Memories</a>
+    <a href="main.html" class="nav-button">Home</a>
+    <a href="events.html" class="nav-button">Events</a>
+    <a href="memories.html" class="nav-button">Memories</a>
   </div>
 </nav>
 
@@ -217,11 +211,11 @@
 </div>
 
 <footer>
-  With <span>♥</span> from Sampreeth & Medini  ·  December 2026
+  With <span>♥</span> from Sampreeth & Medini  ·  December 2026
 </footer>
 
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzK6mvjLIfnOcz5c1BkbtZ1c8pWyBvR5yt7gLN5U_5QzeCCy9y75YwsjNGWf-qjn6epLQ/exec'; // Replace this!
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzK6mvjLIfnOcz5c1BkbtZ1c8pWyBvR5yt7gLN5U_5QzeCCy9y75YwsjNGWf-qjn6epLQ/exec'; 
   const form = document.getElementById('rsvpForm');
   const submitBtn = document.getElementById('submitBtn');
   const messageBox = document.getElementById('message-box');
@@ -230,22 +224,18 @@
   const attendingSelect = document.getElementById('attending');
   const guestGroup = document.getElementById('guest-count-group');
 
-  // Show/Hide guest count based on attendance
   attendingSelect.addEventListener('change', () => {
     guestGroup.style.display = attendingSelect.value === 'no' ? 'none' : 'block';
   });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    
-    // Change button text to show it's working
     submitBtn.disabled = true;
     submitBtn.innerText = "Sending...";
 
     const name = document.getElementById('guest-name').value;
     const status = attendingSelect.value;
 
-    // Send the data to Google Apps Script
     fetch(scriptURL, { 
       method: 'POST', 
       body: new FormData(form)
