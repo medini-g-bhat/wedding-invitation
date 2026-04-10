@@ -16,62 +16,58 @@
       line-height: 1.6;
     }
 
-    /* ── TOP NAV BAR (Updated for consistency) ── */
+    /* ── TOP NAV BAR (Non-sticky, Buttons Right) ── */
     .top-nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: relative; /* Changed from fixed to relative to remove stickiness */
       z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 32px;
       background: #ffffff;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      border-bottom: 1px solid rgba(200,151,58,0.1);
       box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
 
     .nav-logo {
       font-family: 'Great Vibes', cursive;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       color: #9c7e2d;
       text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 15px;
     }
 
-    .nav-link {
-      font-size: 0.65rem;
+    .nav-button {
+      font-size: 0.7rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #9c7e2d;
+      background: linear-gradient(145deg, #bf953f, #9c7e2d); 
+      color: #ffffff;
       text-decoration: none;
-      transition: all 0.3s ease;
+      padding: 10px 25px;
+      border-radius: 50px;
+      border: 1px solid #9c7e2d;
       font-weight: 600;
-      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 12px rgba(156, 126, 45, 0.25);
+      display: inline-block;
     }
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: -4px;
-      left: 0;
-      background-color: #d4af37;
-      transition: width 0.3s ease;
+    .nav-button:hover {
+      background: linear-gradient(145deg, #9c7e2d, #7a5f1d);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 18px rgba(156, 126, 45, 0.4);
     }
-
-    .nav-link:hover { color: #d4af37; }
-    .nav-link:hover::after { width: 100%; }
 
     /* ── HERO SECTION ── */
     header.hero {
       position: relative;
       text-align: center;
-      padding: 130px 20px 100px;
+      padding: 80px 20px 80px; /* Reduced top padding since nav is no longer fixed */
       background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fdf9f0 100%);
       color: #9c7e2d;
       overflow: hidden;
@@ -81,20 +77,45 @@
     }
 
     header.hero::before {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.1) 0%, transparent 55%),
-                  radial-gradient(ellipse at 0% 100%, rgba(212,175,55,0.05) 0%, transparent 50%),
-                  radial-gradient(ellipse at 100% 100%, rgba(212,175,55,0.05) 0%, transparent 50%);
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.1) 0%, transparent 55%),
+        radial-gradient(ellipse at 0% 100%, rgba(212,175,55,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, rgba(212,175,55,0.05) 0%, transparent 50%);
     }
 
     .hero-ornament { position: absolute; width: 150px; height: 150px; opacity: 0.1; z-index: 1; color: #d4af37; }
     .ornament-tl { top: 20px; left: 20px; }
     .ornament-tr { top: 20px; right: 20px; transform: rotate(90deg); }
 
-    .header-bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent); }
+    .header-bottom-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent);
+      z-index: 2;
+    }
 
-    header.hero h1 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: #9c7e2d; text-shadow: 0 2px 10px rgba(0,0,0,0.05); animation: floatText 4s ease-in-out infinite; z-index: 2; }
-    header.hero p { font-size: 0.85rem; letter-spacing: 7px; text-transform: uppercase; color: #bca05a; animation: fadeIn 1.5s ease forwards; opacity: 0; z-index: 2; }
+    header.hero h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5rem;
+      color: #9c7e2d;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      animation: floatText 4s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    header.hero p {
+      font-size: 0.85rem;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      color: #bca05a;
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
+      z-index: 3;
+    }
 
     @keyframes floatText { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
@@ -102,23 +123,23 @@
     /* ── GALLERY GRID ── */
     .gallery-container {
       max-width: 1200px;
-      margin: 60px auto 100px;
+      margin: 40px auto 100px;
       padding: 0 20px;
-      columns: 3 300px; /* Masonry effect */
-      column-gap: 20px;
+      columns: 3 300px;
+      column-gap: 25px;
     }
 
     .gallery-item {
       display: inline-block;
       width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       position: relative;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       background: #fff;
-      box-shadow: 0 10px 30px rgba(212,175,55,0.08);
+      box-shadow: 0 6px 20px rgba(212,175,55,0.08);
       border: 1px solid rgba(212,175,55,0.15);
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: all 0.4s ease;
       cursor: pointer;
     }
 
@@ -129,8 +150,8 @@
     }
 
     .gallery-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(212,175,55,0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(156, 126, 45, 0.15);
       border-color: #c8973a;
     }
 
@@ -147,7 +168,7 @@
 
     .photo-caption h4 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #9c7e2d;
       font-style: italic;
     }
@@ -167,9 +188,7 @@
 
     @media (max-width: 768px) {
       header.hero h1 { font-size: 3.2rem; }
-      .top-nav { padding: 12px 16px; }
-      .nav-links { gap: 12px; }
-      .nav-link { font-size: 0.58rem; letter-spacing: 1px; }
+      .top-nav { padding: 12px 15px; flex-direction: column; gap: 15px; }
       .gallery-container { columns: 1; }
     }
   </style>
@@ -179,9 +198,9 @@
 <nav class="top-nav">
   <a href="index.html" class="nav-logo">S & M</a>
   <div class="nav-links">
-    <a href="main.html" class="nav-link">Home</a>
-    <a href="events.html" class="nav-link">Events</a>
-    <a href="rsvp.html" class="nav-link">RSVP</a>
+    <a href="main.html" class="nav-button">Home</a>
+    <a href="events.html" class="nav-button">Events</a>
+    <a href="rsvp.html" class="nav-button">RSVP</a>
   </div>
 </nav>
 
@@ -196,60 +215,44 @@
 </header>
 
 <div class="gallery-container">
-  
   <div class="gallery-item">
     <img src="image/WhatsApp Image 2026-02-27 at 4.07.49 AM.jpeg" alt="Memory 1">
-    <div class="photo-caption">
-      <h4>The Beginning</h4>
-    </div>
+    <div class="photo-caption"><h4>The Beginning</h4></div>
   </div>
 
   <div class="gallery-item">
     <img src="image/WhatsApp Image 2026-02-27 at 4.09.44 AM.jpeg" alt="Memory 2">
-    <div class="photo-caption">
-      <h4>Our First Date</h4>
-    </div>
+    <div class="photo-caption"><h4>Our First Date</h4></div>
   </div>
 
   <div class="gallery-item">
     <img src="image/WhatsApp Image 2026-04-04 at 9.58.05 AM.jpeg" alt="Memory 3">
-    <div class="photo-caption">
-      <h4>Sweet Moments</h4>
-    </div>
+    <div class="photo-caption"><h4>Sweet Moments</h4></div>
   </div>
 
   <div class="gallery-item">
     <img src="image/WhatsApp Image 2026-04-04 at 6.28.27 AM.jpeg" alt="Memory 4">
-    <div class="photo-caption">
-      <h4>The Engagement</h4>
-    </div>
+    <div class="photo-caption"><h4>The Engagement</h4></div>
   </div>
 
   <div class="gallery-item">
     <img src="image/WhatsApp Image 2026-02-27 at 3.37.23 AM.jpeg" alt="Memory 5">
-    <div class="photo-caption">
-      <h4>Sunset Smiles</h4>
-    </div>
+    <div class="photo-caption"><h4>Sunset Smiles</h4></div>
   </div>
 
    <div class="gallery-item">
     <img src="image/WhatsApp Image 2026-02-27 at 3.37.23 AM (2).jpeg" alt="Memory 7">
-    <div class="photo-caption">
-      <h4>Travel Diaries</h4>
-    </div>
+    <div class="photo-caption"><h4>Travel Diaries</h4></div>
   </div>
 
   <div class="gallery-item">
     <img src="image/WhatsApp Image 2026-02-27 at 4.13.42 AM.jpeg" alt="Memory 6">
-    <div class="photo-caption">
-      <h4>Forever Starts Soon</h4>
-    </div>
+    <div class="photo-caption"><h4>Forever Starts Soon</h4></div>
   </div>
-
 </div>
 
 <footer>
-  With <span>♥</span> from Sampreeth & Medini  ·  December 2026
+  With <span>♥</span> from Sampreeth & Medini  ·  December 2026
 </footer>
 
 </body>
