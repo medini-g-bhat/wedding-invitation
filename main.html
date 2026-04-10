@@ -10,11 +10,66 @@
 
     body {
       font-family: 'Josefin Sans', sans-serif;
-      /* SIMPLE BACKGROUND DESIGN: Subtle gold pattern on white */
       background-color: #ffffff;
       background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0l-4 40 4 40 4-40z' fill='%23d4af37' fill-opacity='0.03'/%3E%3Cpath d='M0 40l40-4 40 4-40 4z' fill='%23d4af37' fill-opacity='0.03'/%3E%3C/svg%3E");
       color: #4a4a4a;
       line-height: 1.6;
+    }
+
+    /* ── ENHANCED NAVIGATION ── */
+    .top-nav {
+      background: rgba(255, 255, 255, 0.98);
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+      border-bottom: 1px solid rgba(200,151,58,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(156, 126, 45, 0.1);
+    }
+
+    .top-nav a {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffffff; /* White text on gold background */
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      /* Rich Gold Gradient Background */
+      background: linear-gradient(135deg, #e2b96a 0%, #c8973a 100%);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(200, 151, 58, 0.3);
+      border: none;
+    }
+
+    .top-nav a:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(200, 151, 58, 0.5);
+      background: linear-gradient(135deg, #c8973a 0%, #9c7e2d 100%);
+    }
+
+    /* RSVP Specific Bold Design */
+    .top-nav a[href="rsvp.html"] {
+      background: linear-gradient(135deg, #b8860b 0%, #8b6508 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle Shine Effect for RSVP */
+    .top-nav a[href="rsvp.html"]::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255,255,255,0.1);
+      transform: rotate(45deg);
+      transition: 0.5s;
     }
 
     /* ── HEADER ── */
@@ -22,7 +77,6 @@
       position: relative;
       text-align: center;
       padding: 90px 20px 50px;
-      /* Soft White/Champagne Gradient */
       background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fdf9f0 100%);
       color: #9c7e2d;
       overflow: hidden;
@@ -53,18 +107,15 @@
       background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent);
     }
 
-    header h1, header p {
-      position: relative;
-      z-index: 1;
-    }
-
     header h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 4rem;
-      color: #9c7e2d; /* Gold Text */
+      color: #9c7e2d;
       text-shadow: 0 2px 10px rgba(0,0,0,0.05);
       margin-bottom: 12px;
       animation: floatText 4s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
     }
 
     header p {
@@ -74,6 +125,8 @@
       color: #bca05a;
       animation: fadeIn 1.5s ease forwards;
       opacity: 0;
+      position: relative;
+      z-index: 1;
     }
 
     @keyframes floatText {
@@ -87,12 +140,6 @@
     }
 
     /* ── SECTIONS ── */
-    section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
     h2 {
       font-family: 'Great Vibes', cursive;
       font-size: 2.8rem;
@@ -101,7 +148,6 @@
       margin-bottom: 6px;
     }
 
-    /* ── DIVIDER: three dots ── */
     .section-line {
       display: flex;
       align-items: center;
@@ -111,32 +157,20 @@
     }
 
     .section-line .seg {
-      height: 1px;
-      width: 55px;
-      background: #c8973a;
-      opacity: 0.4;
-    }
-
-    .section-line .dot-group {
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      height: 1px; width: 55px;
+      background: #c8973a; opacity: 0.4;
     }
 
     .section-line .dot-group span {
-      display: block;
-      border-radius: 50%;
+      display: block; border-radius: 50%;
       background: #c8973a;
-      opacity: 0.7;
     }
-
-    .section-line .dot-group span.sm  { width: 4px; height: 4px; }
-    .section-line .dot-group span.md  { width: 6px; height: 6px; opacity: 1; }
+    .section-line .dot-group span.sm { width: 4px; height: 4px; opacity: 0.5; }
+    .section-line .dot-group span.md { width: 6px; height: 6px; opacity: 1; }
 
     /* ── LOVE STORY ── */
     .love-story {
       background: rgba(255, 255, 255, 0.8);
-      max-width: 100%;
       border-top: 1px solid rgba(200,151,58,0.2);
       border-bottom: 1px solid rgba(200,151,58,0.2);
     }
@@ -151,7 +185,7 @@
       text-align: center;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: #5a5a5a;
       max-width: 700px;
       margin: auto;
@@ -162,17 +196,13 @@
     .countdown-section {
       text-align: center;
       background: #fdfaf4;
-      max-width: 100%;
       padding: 40px 20px;
       border-bottom: 1px solid rgba(200,151,58,0.1);
     }
 
-    .countdown-section h2 { color: #9c7e2d; }
-
     .countdown {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.6rem;
-      font-weight: 400;
       color: #9c7e2d;
       letter-spacing: 1px;
     }
@@ -181,7 +211,7 @@
     footer {
       background: #ffffff;
       text-align: center;
-      padding: 28px 20px;
+      padding: 30px 20px;
       font-size: 0.7rem;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -189,35 +219,12 @@
       border-top: 1px solid rgba(200,151,58,0.1);
     }
 
-    footer span { color: #c8973a; }
-
-    /* ── TOP NAV BAR ── */
-    .top-nav {
-      background: #ffffff;
-      display: flex;
-      justify-content: center;
-      gap: 36px;
-      padding: 10px 20px;
-      border-bottom: 1px solid rgba(200,151,58,0.1);
-    }
-
-    .top-nav a {
-      font-size: 0.65rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #9c7e2d;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      position: relative;
-      padding-bottom: 2px;
-    }
-
-    .top-nav a:hover { color: #d4af37; }
+    footer span { color: #d44c4c; }
 
     @media (max-width: 768px) {
       header h1  { font-size: 2.8rem; }
-      h2         { font-size: 2.2rem; }
-      .countdown { font-size: 1rem; }
+      .top-nav { gap: 8px; padding: 12px; }
+      .top-nav a { padding: 10px 15px; font-size: 0.6rem; letter-spacing: 1px; }
     }
   </style>
 </head>
@@ -225,7 +232,7 @@
 
 <nav class="top-nav">
   <a href="events.html">Events</a>
-  <a href="rsvp.html">RSVP</a>
+  <a href="rsvp.html">RSVP Now</a>
   <a href="memories.html">Memories</a>
 </nav>
 
@@ -248,11 +255,11 @@
       <div class="seg"></div>
     </div>
     <p>
-      What started as a game of fun for his friends turned us in to couple. Late night talks , 
-      looking in to each others in classroom, walking through our stories , yes it started spark in both 
-      of us . Unknowingly both started planting seeds in each other hearts which has grown in to a huge
-      tree now , not just a tree but a fruitful one . Now we have planned to celebrate this relationship 
-      with our culture through ‘Gandharva Vivaha’. Lets celebrate this together
+      What started as a game of fun for his friends turned us into a couple. Late night talks, 
+      looking into each other in the classroom, walking through our stories—yes, it started a spark in both 
+      of us. Unknowingly, both started planting seeds in each other's hearts which has grown into a huge
+      tree now, not just a tree but a fruitful one. Now we have planned to celebrate this relationship 
+      with our culture through ‘Gandharva Vivaha’. Let's celebrate this together.
     </p>
   </div>
 </div>
