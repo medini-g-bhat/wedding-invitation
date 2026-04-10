@@ -14,6 +14,8 @@
       color: #4a4a4a;
       line-height: 1.6;
       min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
     /* ── TOP NAV BAR ── */
@@ -21,36 +23,33 @@
       background: #ffffff;
       display: flex;
       justify-content: center;
-      gap: 25px;
-      padding: 30px 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
       border-bottom: 1px solid rgba(200,151,58,0.1);
     }
 
     .top-nav a {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       background: linear-gradient(145deg, #bf953f, #9c7e2d); 
       color: #ffffff;
       text-decoration: none;
-      padding: 12px 35px;
+      padding: 10px 25px;
       border-radius: 50px;
       border: 1px solid #9c7e2d;
       font-weight: 600;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 6px 20px rgba(156, 126, 45, 0.35);
-    }
-
-    .top-nav a:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(156, 126, 45, 0.5);
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 12px rgba(156, 126, 45, 0.25);
+      white-space: nowrap;
     }
 
     /* ── HERO SECTION ── */
     header.hero {
       position: relative;
       text-align: center;
-      padding: 80px 20px 80px;
+      padding: 60px 20px 80px;
       background: #ffffff;
       color: #9c7e2d;
     }
@@ -60,73 +59,86 @@
       background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent); 
     }
 
-    header.hero h1 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: #9c7e2d; margin-bottom: 10px; }
-    header.hero p { font-size: 0.85rem; letter-spacing: 7px; text-transform: uppercase; color: #bca05a; }
+    header.hero h1 { 
+      font-family: 'Great Vibes', cursive; 
+      font-size: 4rem; 
+      color: #9c7e2d; 
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    header.hero p { 
+      font-size: 0.8rem; 
+      letter-spacing: 5px; 
+      text-transform: uppercase; 
+      color: #bca05a; 
+    }
 
     /* ── COLORED RSVP BOX ── */
     .rsvp-container {
-      max-width: 600px;
-      margin: -50px auto 80px;
-      padding: 50px;
-      /* Soft Champagne/Gold Gradient */
+      max-width: 550px;
+      width: 90%; /* Responsive width */
+      margin: -40px auto 80px;
+      padding: 40px;
       background: linear-gradient(135deg, #fffdfa 0%, #fdf5e6 100%);
       border-radius: 20px;
-      /* Elegant Gold Border */
       border: 2px solid rgba(200, 151, 58, 0.2);
       box-shadow: 0 25px 50px rgba(156, 126, 45, 0.15);
       position: relative;
       z-index: 10;
     }
 
-    /* Decorative inner line for that 'Stationery' look */
     .rsvp-container::after {
       content: "";
       position: absolute;
-      top: 15px; left: 15px; right: 15px; bottom: 15px;
-      border: 1px solid rgba(200, 151, 58, 0.1);
+      top: 10px; left: 10px; right: 10px; bottom: 10px;
+      border: 1px solid rgba(200, 151, 58, 0.08);
       border-radius: 12px;
       pointer-events: none;
     }
 
-    .rsvp-form-group { margin-bottom: 25px; text-align: left; }
-    label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #9c7e2d; margin-bottom: 8px; font-weight: 600; }
+    .rsvp-form-group { margin-bottom: 20px; text-align: left; }
+    label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #9c7e2d; margin-bottom: 6px; font-weight: 600; }
     
     input, select {
       width: 100%;
-      padding: 14px 15px;
+      padding: 12px;
       border: 1px solid rgba(212,175,55,0.3);
       border-radius: 8px;
       font-family: 'Josefin Sans', sans-serif;
       font-size: 1rem;
       background-color: #ffffff;
-      transition: all 0.3s ease;
     }
-
-    input:focus { outline: none; border-color: #9c7e2d; box-shadow: 0 0 8px rgba(156, 126, 45, 0.2); }
 
     .rsvp-button {
       width: 100%;
-      padding: 16px;
+      padding: 15px;
       background: linear-gradient(135deg, #c8973a 0%, #9c7e2d 100%);
       color: #ffffff;
       border: none;
       border-radius: 8px;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 20px rgba(156, 126, 45, 0.3);
+      margin-top: 10px;
     }
 
-    .rsvp-button:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(156, 126, 45, 0.4); }
+    footer { text-align: center; padding: 40px 20px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #9c7e2d; }
 
-    footer { background: #ffffff; text-align: center; padding: 40px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #9c7e2d; border-top: 1px solid rgba(212,175,55,0.1); }
-    footer span { color: #c8973a; }
-
-    @media (max-width: 768px) {
-      header.hero h1 { font-size: 3.2rem; }
-      .rsvp-container { margin: 20px; padding: 35px 20px; }
+    /* ── MOBILE ALIGNMENT FIXES ── */
+    @media (max-width: 480px) {
+      header.hero { padding: 40px 15px 60px; }
+      header.hero h1 { font-size: 2.8rem; }
+      header.hero p { font-size: 0.7rem; letter-spacing: 3px; }
+      
+      .rsvp-container {
+        padding: 25px 20px; /* Reduced padding for more space */
+        margin-top: -30px;
+      }
+      
+      .top-nav { gap: 10px; padding: 15px 10px; }
+      .top-nav a { padding: 8px 15px; font-size: 0.6rem; }
     }
   </style>
 </head>
@@ -152,7 +164,7 @@
     </div>
 
     <div class="rsvp-form-group">
-      <label for="attending">Will you be attending?</label>
+      <label for="attending">Attendance</label>
       <select id="attending" name="isAttending" required>
         <option value="" disabled selected>Please select...</option>
         <option value="yes">Yes, I'll be there!</option>
@@ -169,16 +181,16 @@
   </form>
 
   <div id="message-box" style="display: none; text-align: center;">
-    <div style="font-size: 3rem; margin-bottom: 15px;">✨</div>
-    <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: #9c7e2d;">Thank You!</h2>
-    <p id="response-text" style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic;"></p>
+    <div style="font-size: 2.5rem; margin-bottom: 10px;">✨</div>
+    <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: #9c7e2d;">Thank You!</h2>
+    <p id="response-text" style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic;"></p>
     <br>
-    <a href="main.html" style="color: #c8973a; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; text-decoration: none; border-bottom: 1px solid #c8973a;">Return to Home</a>
+    <a href="main.html" style="color: #c8973a; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; text-decoration: none; border-bottom: 1px solid #c8973a;">Return Home</a>
   </div>
 </div>
 
 <footer>
-  With <span>♥</span> from Sampreeth & Medini  ·  December 2026
+  With ♥ from Sampreeth & Medini
 </footer>
 
 <script>
@@ -205,13 +217,12 @@
       form.style.display = 'none';
       messageBox.style.display = 'block';
       responseText.innerText = attendingSelect.value === 'yes' ? 
-        `We are so excited to celebrate with you, ${name}! See you in December!` : 
+        `We are so excited to celebrate with you, ${name}!` : 
         `Thank you for letting us know, ${name}. We'll miss you!`;
     })
     .catch(error => {
       submitBtn.disabled = false;
       submitBtn.innerText = "Send Response";
-      alert("Error sending RSVP. Please try again.");
     });
   });
 </script>
