@@ -10,135 +10,212 @@
 
     body {
       font-family: 'Josefin Sans', sans-serif;
-      background-color: #ffffff; 
+      background-color: #ffffff;
       color: #4a4a4a;
       line-height: 1.6;
-      min-height: 100vh;
-      width: 100%;
-      overflow-x: hidden; /* Prevent horizontal scroll */
+      overflow-x: hidden;
     }
 
-    /* ── TOP NAV BAR ── */
+    /* ── NAVIGATION (Matches Memories Page) ── */
     .top-nav {
       background: #ffffff;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      padding: 20px;
+      gap: 25px;
+      padding: 30px 20px;
       border-bottom: 1px solid rgba(200,151,58,0.1);
     }
 
     .top-nav a {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       background: linear-gradient(145deg, #bf953f, #9c7e2d); 
       color: #ffffff;
       text-decoration: none;
-      padding: 10px 25px;
+      padding: 12px 35px;
       border-radius: 50px;
       border: 1px solid #9c7e2d;
       font-weight: 600;
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 12px rgba(156, 126, 45, 0.25);
-      white-space: nowrap;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 6px 20px rgba(156, 126, 45, 0.35);
     }
 
-    /* ── HERO SECTION ── */
+    .top-nav a:hover {
+      background: linear-gradient(145deg, #9c7e2d, #7a5f1d);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(156, 126, 45, 0.5);
+    }
+
+    /* ── HERO SECTION (Matches Memories Page) ── */
     header.hero {
       position: relative;
       text-align: center;
-      padding: 60px 20px 80px;
-      background: #ffffff;
+      padding: 90px 20px 80px;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fdf9f0 100%);
       color: #9c7e2d;
     }
 
-    .header-bottom-bar { 
-      position: absolute; bottom: 0; left: 0; right: 0; height: 4px; 
-      background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent); 
-    }
-
-    header.hero h1 { 
-      font-family: 'Great Vibes', cursive; 
-      font-size: 4rem; 
-      color: #9c7e2d; 
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-
-    header.hero p { 
-      font-size: 0.8rem; 
-      letter-spacing: 5px; 
-      text-transform: uppercase; 
-      color: #bca05a; 
-    }
-
-    /* ── COLORED RSVP BOX ── */
-    .rsvp-container {
-      max-width: 550px;
-      width: 90%; /* Responsive width */
-      margin: -40px auto 80px;
-      padding: 40px;
-      background: linear-gradient(135deg, #fffdfa 0%, #fdf5e6 100%);
-      border-radius: 20px;
-      border: 2px solid rgba(200, 151, 58, 0.2);
-      box-shadow: 0 25px 50px rgba(156, 126, 45, 0.15);
-      position: relative;
-      z-index: 10;
-    }
-
-    .rsvp-container::after {
+    header.hero::before {
       content: "";
       position: absolute;
-      top: 10px; left: 10px; right: 10px; bottom: 10px;
-      border: 1px solid rgba(200, 151, 58, 0.08);
-      border-radius: 12px;
-      pointer-events: none;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent);
     }
 
-    .rsvp-form-group { margin-bottom: 20px; text-align: left; }
-    label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #9c7e2d; margin-bottom: 6px; font-weight: 600; }
-    
-    input, select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid rgba(212,175,55,0.3);
-      border-radius: 8px;
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 1rem;
-      background-color: #ffffff;
+    .header-bottom-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent);
     }
 
-    .rsvp-button {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, #c8973a 0%, #9c7e2d 100%);
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
+    header.hero h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5rem;
+      color: #9c7e2d;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      animation: floatText 4s ease-in-out infinite;
+    }
+
+    header.hero p {
+      font-size: 0.85rem;
+      letter-spacing: 7px;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 600;
-      cursor: pointer;
+      color: #bca05a;
       margin-top: 10px;
     }
 
-    footer { text-align: center; padding: 40px 20px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #9c7e2d; }
+    @keyframes floatText {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
 
-    /* ── MOBILE ALIGNMENT FIXES ── */
-    @media (max-width: 480px) {
-      header.hero { padding: 40px 15px 60px; }
-      header.hero h1 { font-size: 2.8rem; }
-      header.hero p { font-size: 0.7rem; letter-spacing: 3px; }
-      
-      .rsvp-container {
-        padding: 25px 20px; /* Reduced padding for more space */
-        margin-top: -30px;
-      }
-      
-      .top-nav { gap: 10px; padding: 15px 10px; }
-      .top-nav a { padding: 8px 15px; font-size: 0.6rem; }
+    /* ── RSVP CONTAINER (Clean & Attractive) ── */
+    .rsvp-section {
+      padding: 60px 20px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .rsvp-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 600px;
+      padding: 50px;
+      border-radius: 15px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .rsvp-card::after {
+      content: "";
+      position: absolute;
+      inset: 15px;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 2;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #9c7e2d;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 8px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1rem;
+      background-color: #fffcf7;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #c8973a;
+      background-color: #ffffff;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #c8973a 0%, #9c7e2d 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 20px rgba(156, 126, 45, 0.2);
+      margin-top: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(156, 126, 45, 0.4);
+    }
+
+    /* ── SUCCESS MESSAGE ── */
+    #message-box {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .msg-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #9c7e2d;
+      margin-bottom: 10px;
+    }
+
+    .msg-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: #5a5a5a;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #ffffff;
+      text-align: center;
+      padding: 50px 20px;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9c7e2d;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    /* ── MOBILE RESPONSIVENESS ── */
+    @media (max-width: 768px) {
+      header.hero h1 { font-size: 3rem; }
+      .top-nav { gap: 10px; padding: 20px 10px; }
+      .top-nav a { padding: 10px 20px; font-size: 0.65rem; }
+      .rsvp-card { padding: 35px 20px; margin: 0 10px; }
     }
   </style>
 </head>
@@ -156,41 +233,43 @@
   <div class="header-bottom-bar"></div>
 </header>
 
-<div class="rsvp-container">
-  <form id="rsvpForm">
-    <div class="rsvp-form-group">
-      <label for="guest-name">Full Name</label>
-      <input type="text" id="guest-name" name="guestName" placeholder="Enter your name" required>
+<section class="rsvp-section">
+  <div class="rsvp-card">
+    <form id="rsvpForm">
+      <div class="form-group">
+        <label for="guest-name">Full Name</label>
+        <input type="text" id="guest-name" name="guestName" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="attending">Attendance</label>
+        <select id="attending" name="isAttending" required>
+          <option value="" disabled selected>Will you be attending?</option>
+          <option value="yes">Accept with Pleasure</option>
+          <option value="no">Decline with Regret</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="guest-count-group">
+        <label for="guests">Number of Guests</label>
+        <input type="number" id="guests" name="guestCount" min="1" max="10" value="1">
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Send RSVP</button>
+    </form>
+
+    <div id="message-box">
+      <div style="font-size: 3rem; margin-bottom: 15px;">✨</div>
+      <h2 class="msg-title" id="response-title">Thank You</h2>
+      <p class="msg-text" id="response-text"></p>
+      <br><br>
+      <a href="main.html" style="color: #c8973a; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid #c8973a;">Back to Home</a>
     </div>
-
-    <div class="rsvp-form-group">
-      <label for="attending">Attendance</label>
-      <select id="attending" name="isAttending" required>
-        <option value="" disabled selected>Please select...</option>
-        <option value="yes">Yes, I'll be there!</option>
-        <option value="no">Sorry, I can't make it</option>
-      </select>
-    </div>
-
-    <div class="rsvp-form-group" id="guest-count-group">
-      <label for="guests">Number of Guests</label>
-      <input type="number" id="guests" name="guestCount" min="1" max="10" value="1">
-    </div>
-
-    <button type="submit" class="rsvp-button" id="submitBtn">Send Response</button>
-  </form>
-
-  <div id="message-box" style="display: none; text-align: center;">
-    <div style="font-size: 2.5rem; margin-bottom: 10px;">✨</div>
-    <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: #9c7e2d;">Thank You!</h2>
-    <p id="response-text" style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic;"></p>
-    <br>
-    <a href="main.html" style="color: #c8973a; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; text-decoration: none; border-bottom: 1px solid #c8973a;">Return Home</a>
   </div>
-</div>
+</section>
 
 <footer>
-  With ♥ from Sampreeth & Medini
+  With ♥ from Sampreeth & Medini · December 2026
 </footer>
 
 <script>
@@ -198,10 +277,12 @@
   const form = document.getElementById('rsvpForm');
   const submitBtn = document.getElementById('submitBtn');
   const messageBox = document.getElementById('message-box');
+  const responseTitle = document.getElementById('response-title');
   const responseText = document.getElementById('response-text');
   const attendingSelect = document.getElementById('attending');
   const guestGroup = document.getElementById('guest-count-group');
 
+  // Hide guest count if declining
   attendingSelect.addEventListener('change', () => {
     guestGroup.style.display = attendingSelect.value === 'no' ? 'none' : 'block';
   });
@@ -209,20 +290,32 @@
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     submitBtn.disabled = true;
-    submitBtn.innerText = "Sending...";
-    const name = document.getElementById('guest-name').value;
+    submitBtn.innerText = "Processing...";
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    const name = document.getElementById('guest-name').value;
+    const status = attendingSelect.value;
+
+    fetch(scriptURL, { 
+      method: 'POST', 
+      body: new FormData(form)
+    })
     .then(response => {
       form.style.display = 'none';
       messageBox.style.display = 'block';
-      responseText.innerText = attendingSelect.value === 'yes' ? 
-        `We are so excited to celebrate with you, ${name}!` : 
-        `Thank you for letting us know, ${name}. We'll miss you!`;
+
+      if (status === 'yes') {
+        responseTitle.innerText = "Joyful News!";
+        responseText.innerText = `We are so excited to celebrate with you, ${name}! Your presence will make our day truly special.`;
+      } else {
+        responseTitle.innerText = "We'll Miss You";
+        responseText.innerText = `Thank you for letting us know, ${name}. We are sorry you can't join us, but we'll be thinking of you!`;
+      }
     })
     .catch(error => {
+      console.error('Error!', error.message);
       submitBtn.disabled = false;
-      submitBtn.innerText = "Send Response";
+      submitBtn.innerText = "Send RSVP";
+      alert("Something went wrong. Please try again or contact us directly!");
     });
   });
 </script>
