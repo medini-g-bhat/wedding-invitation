@@ -17,7 +17,20 @@
       --gold-dark: #9c7e2d;   
       --text-dark: #4a4a4a;   
     }
-    
+
+    /* Force P3 color space for modern mobile devices */
+@supports (color: color(display-p3 1 1 1)) {
+    :root {
+        --gold-light: color(display-p3 0.749 0.584 0.247);
+        --gold-mid: color(display-p3 0.784 0.592 0.227);
+        --gold-dark: color(display-p3 0.611 0.494 0.176);
+        --text-dark: color(display-p3 0.290 0.290 0.290);
+    }
+}
+    header {
+    /* Use solid colors that aren't quite as 'airy' to prevent OS interference */
+    background: linear-gradient(135deg, #f0f4f7 0%, #faf6f0 50%, #eff4f6 100%);
+}
     body, html {
       height: 100%;
       font-family: 'Josefin Sans', sans-serif;
