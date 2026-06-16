@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light">
   <title>Our Memories · Sampreeth & Medini</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      color-scheme: light; /* This ensures system UI elements also stay light */
       --gold-light: #bf953f;  
       --gold-mid: #c8973a;    
       --gold-dark: #9c7e2d;   
@@ -72,6 +70,11 @@
       text-align: center;
       padding: 110px 24px 40px 24px; 
       background: linear-gradient(135deg, #f4f7f9 0%, #fcf8f2 50%, #f2f6f8 100%);
+       background: 
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), /* Dark overlay for text contrast */
+                url('image/images.jfif') no-repeat center center; /* REPLACE WITH YOUR IMAGE URL */
+            background-size: cover;
+            overflow: hidden;
     }
 
     header.hero::before, .header-bottom-bar {
@@ -89,19 +92,19 @@
       font-size: 2.8rem;
       font-weight: 400;
       letter-spacing: 6px;
-      color: var(--gold-dark); 
+      color: white; 
       text-transform: uppercase;
       margin-bottom: 10px;
-      white-space: nowrap; 
+      white-space: nowrap;
       animation: floatingNames 4s ease-in-out infinite alternate;
     }
 
     header.hero p {
       font-family: 'Cinzel', serif;
-      font-size: 0.65rem; 
-      letter-spacing: 8px;
+      font-size: 0.60rem; 
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold-dark); 
+      color: white; 
       font-weight: 500;
       opacity: 0.7;
       white-space: nowrap; 
@@ -128,6 +131,11 @@
       border: 1px solid rgba(200, 151, 58, 0.3);
       box-shadow: 0 10px 20px rgba(156, 126, 45, 0.15);
       transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      background: 
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), /* Dark overlay for text contrast */
+                url('image/images.jfif') no-repeat center center; /* REPLACE WITH YOUR IMAGE URL */
+            background-size: cover;
+            overflow: hidden;
     }
 
     .gallery-item:hover { 
@@ -142,7 +150,7 @@
     }
 
     .gallery-item img { width: 100%; display: block; transition: all 0.4s ease; }
-    .photo-caption { padding: 25px; text-align: center; font-family: 'Cinzel', serif; color: var(--gold-dark); font-size: 1rem; font-weight: 600; letter-spacing: 3px; transition: color 0.4s ease; }
+    .photo-caption { padding: 25px; text-align: center; font-family: 'Cinzel', serif; color: white; font-size: 1rem; font-weight: 600; letter-spacing: 3px; transition: color 0.4s ease; }
     .gallery-item:hover .photo-caption { color: var(--gold-light); }
 
     /* ── FOOTER ── */
@@ -158,9 +166,10 @@
     footer span { color: var(--gold-mid); font-size: 1.1rem; }
 
     @media (max-width: 768px) {
+      header.hero {hegight: 45vh;}
       header.hero h1 { font-size: 1.8rem; letter-spacing: 3px; }
       header.hero p { letter-spacing: 4px; }
-      .nav-container { top: 15px; width: 95%; }
+      .nav-container { top: 30px; width: 95%; }
       .top-nav a { font-size: 0.85rem; padding: 5px 8px; }
       .gallery-container { columns: 1; }
     }
