@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light">
   <title>RSVP · Sampreeth & Medini</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      color-scheme: light; /* This ensures system UI elements also stay light */
       --gold-light: #bf953f;  
       --gold-mid: #c8973a;    
       --gold-dark: #9c7e2d;   
@@ -18,11 +16,23 @@
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #ffffff;
-      color: var(--text-dark);
-      overflow-x: hidden;
-    }
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
+    /* Ensure this path matches the actual file name and extension */
+    background-image: url('image/creative-flower-designs-in-black-fashion-page-border-background-word-template_41ceb5c2bf__1131_1600.jpg');
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    color: var(--text-dark);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
 
     /* ── NAVIGATION ── */
     .nav-container {
@@ -70,14 +80,20 @@
       justify-content: center;
       text-align: center;
       padding: 110px 24px 40px 24px; 
-      background: linear-gradient(135deg, #f4f7f9 0%, #fcf8f2 50%, #f2f6f8 100%);
+      /* background: linear-gradient(135deg, #f4f7f9 0%, #fcf8f2 50%, #f2f6f8 100%); */
+       background: 
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), /* Dark overlay for text contrast */
+                url('image/images.jfif') no-repeat center center; /* REPLACE WITH YOUR IMAGE URL */
+            background-size: cover;
+            overflow: hidden;
+
     }
 
     header.hero::before, .header-bottom-bar {
       content: "";
       position: absolute;
       left: 0; right: 0;
-      height: 4px;
+      height: 2px;
       background: linear-gradient(90deg, transparent, var(--gold-mid), #e2b96a, var(--gold-mid), transparent);
     }
     header.hero::before { top: 0; }
@@ -88,7 +104,8 @@
       font-size: 2.8rem;
       font-weight: 400;
       letter-spacing: 6px;
-      color: var(--gold-dark); 
+      /* color: var(--gold-dark);  */
+      color: white;
       text-transform: uppercase;
       margin-bottom: 15px;
       white-space: nowrap; 
@@ -97,10 +114,11 @@
 
     header.hero p {
       font-family: 'Cinzel', serif;
-      font-size: 0.75rem; 
-      letter-spacing: 12px;
+      font-size: 0.65rem; 
+      letter-spacing: 8px;
       text-transform: uppercase;
-      color: var(--gold-dark); 
+      /* color: var(--gold-dark);  */
+      color: white;
       font-weight: 500;
       opacity: 0.8;
       white-space: nowrap;
@@ -116,11 +134,16 @@
       background-color: #fcf9f2; 
       border: 1px solid rgba(200, 151, 58, 0.3); 
       border-radius: 20px; 
-      box-shadow: 0 15px 40px rgba(156, 126, 45, 0.08); 
+      box-shadow: 0 15px 40px rgba(156, 126, 45, 0.08);
+       background: 
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), /* Dark overlay for text contrast */
+                url('image/images.jfif') no-repeat center center; /* REPLACE WITH YOUR IMAGE URL */
+            background-size: cover;
+            overflow: hidden; 
     }
 
     .form-group { margin-bottom: 20px; }
-    label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold-dark); margin-bottom: 8px; font-weight: 600; }
+    label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: white; margin-bottom: 8px; font-weight: 600; }
     
     input, select { 
       width: 100%; 
@@ -156,8 +179,20 @@
     @keyframes floatingNames { from { transform: translateY(0); } to { transform: translateY(-12px); } }
 
     @media (max-width: 768px) {
+      body {
+        /* 'contain' ensures the WHOLE image is visible, including corners */
+        background-size: contain; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-color: #ffffff; /* Set a fallback color for the edges */
+    }
+      header.hero {
+        height: 40vh; /* Reduced from default/inherited */
+        padding: 40px 15px 20px 15px;
+    }
       header.hero h1 { font-size: 1.8rem; letter-spacing: 3px; }
-      .nav-container { top: 15px; width: 95%; }
+      .nav-container { top: 30px; width: 95%; }
       .top-nav a { font-size: 0.85rem; padding: 5px 8px; }
     }
   </style>
