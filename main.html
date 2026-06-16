@@ -1,312 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sampreeth & Medini Wedding</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampreeth & Medini Wedding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: 'Josefin Sans', sans-serif;
-      background-color: #ffffff;
-      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0l-4 40 4 40 4-40z' fill='%23d4af37' fill-opacity='0.03'/%3E%3Cpath d='M0 40l40-4 40 4-40 4z' fill='%23d4af37' fill-opacity='0.03'/%3E%3C/svg%3E");
-      color: #4a4a4a;
-      line-height: 1.6;
-    }
+        :root {
+            --primary-bg: #ffffff;
+            --gold-light: #bf953f;  
+            --gold-mid: #c8973a;    
+            --gold-dark: #9c7e2d;   
+            --text-dark: #4a4a4a;   
+        }
 
-    /* ── UPDATED NAVIGATION WITH GRADIENT & LARGER SIZE ── */
-    .top-nav {
-      background: #ffffff;
-      display: flex;
-      justify-content: center;
-      gap: 25px; /* Slightly more gap */
-      padding: 30px 20px;
-      border-bottom: 1px solid rgba(200,151,58,0.1);
-    }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
 
-    .top-nav a {
-      font-size: 0.75rem; /* Larger font */
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      /* Gold Gradient Shade */
-      background: linear-gradient(145deg, #bf953f, #9c7e2d); 
-      color: #ffffff;
-      text-decoration: none;
-      padding: 12px 35px; /* Larger padding for bigger buttons */
-      border-radius: 50px;
-      border: 1px solid #9c7e2d;
-      font-weight: 600;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      /* Enhanced Shadow */
-      box-shadow: 0 6px 20px rgba(156, 126, 45, 0.35);
-      display: inline-block;
-    }
+        /* ── NAVIGATION BAR (ABSOLUTE: SCROLLS AWAY NATURALLY) ── */
+        .nav-container {
+            position: absolute; 
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 90%;
+            max-width: 650px;
+        }
 
-    .top-nav a:hover {
-      /* Inverted Gradient on Hover */
-      background: linear-gradient(145deg, #9c7e2d, #7a5f1d);
-      border-color: #7a5f1d;
-      transform: translateY(-4px) scale(1.05); /* Slight grow effect */
-      box-shadow: 0 10px 25px rgba(156, 126, 45, 0.5);
-    }
+        .top-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(200, 151, 58, 0.2);
+            padding: 12px 35px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(156, 126, 45, 0.1);
+        }
 
-    /* ── HEADER ── */
-    header {
-      position: relative;
-      text-align: center;
-      padding: 90px 20px 50px;
-      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fdf9f0 100%);
-      color: #9c7e2d;
-      overflow: hidden;
-    }
+        .top-nav a {
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem; 
+            letter-spacing: 2px;
+            color: var(--gold-dark);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
 
-    header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.1) 0%, transparent 55%),
-        radial-gradient(ellipse at 0% 100%, rgba(212,175,55,0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 100% 100%, rgba(212,175,55,0.05) 0%, transparent 50%);
-    }
+        .top-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, var(--gold-light), var(--gold-dark));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
 
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent);
-    }
+        .top-nav a:hover { color: var(--gold-light); }
+        .top-nav a:hover::after { width: 80%; }
 
-    .header-bottom-bar {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #c8973a, #e2b96a, #c8973a, transparent);
-    }
+        /* ── HERO SECTION ── */
+        header {
+            position: relative;
+            height: 58vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 110px 24px 40px 24px; 
+            background: linear-gradient(135deg, #f4f7f9 0%, #fcf8f2 50%, #f2f6f8 100%);
+        }
 
-    header h1, header p {
-      position: relative;
-      z-index: 1;
-    }
+        header::before, header .bottom-border {
+            content: "";
+            position: absolute;
+            left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold-mid), #e2b96a, var(--gold-mid), transparent);
+            z-index: 2;
+        }
+        header::before { top: 0; }
+        header .bottom-border { bottom: 0; }
 
-    header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4rem;
-      color: #9c7e2d; 
-      text-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      margin-bottom: 12px;
-      animation: floatText 4s ease-in-out infinite;
-    }
+        .header-content {
+            z-index: 3;
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+        }
 
-    header p {
-      font-size: 0.8rem;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      color: #bca05a;
-      animation: fadeIn 1.5s ease forwards;
-      opacity: 0;
-    }
+        /* ── THE FIXED ANIMATION LOGIC ── */
+        .fade-in-wrapper {
+            /* This parent container handles the soft initial entrance fade-in */
+            animation: fadeInUp 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
 
-    @keyframes floatText {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-8px); }
-    }
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.8rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            color: var(--gold-dark); 
+            line-height: 1.4;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            white-space: nowrap; 
+            display: inline-block;
+            /* This child h1 safely handles the smooth, endless floating motion without conflict */
+            animation: floatingNames 4s ease-in-out infinite alternate;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+        header h1 span {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            text-transform: lowercase;
+            letter-spacing: 0;
+            padding: 0 8px;
+            color: var(--gold-dark); 
+        }
 
-    /* ── SECTIONS ── */
-    section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+        header p {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            color: var(--gold-dark); 
+            font-weight: 500;
+            animation: fadeInUp 2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-    h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.8rem;
-      text-align: center;
-      color: #9c7e2d;
-      margin-bottom: 6px;
-    }
+        section {
+            padding: 80px 20px; 
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
 
-    /* ── DIVIDER ── */
-    .section-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 28px;
-    }
+        /* ── HEADERS ── */
+        h2 {
+            font-family: 'Cinzel', serif !important;
+            font-size: 2rem !important; 
+            font-weight: 400 !important; 
+            text-align: center;
+            letter-spacing: 6px !important; 
+            color: var(--gold-dark); 
+            text-transform: uppercase !important;
+        }
 
-    .section-line .seg {
-      height: 1px;
-      width: 55px;
-      background: #c8973a;
-      opacity: 0.4;
-    }
+        /* ── UNIFIED TIMELINE SEPARATOR ── */
+        .timeline-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 25px 0 35px 0;
+        }
+        .timeline-separator .timeline-line {
+            height: 1px;
+            width: 160px;
+            background: linear-gradient(90deg, transparent, var(--gold-mid), var(--gold-light));
+        }
+        .timeline-separator .timeline-line.reverse {
+            background: linear-gradient(90deg, var(--gold-light), var(--gold-mid), transparent);
+        }
+        .timeline-separator .timeline-dot {
+            width: 5px;
+            height: 5px;
+            background-color: var(--gold-dark);
+            border-radius: 50%;
+            margin: 0 15px;
+        }
 
-    .section-line .dot-group {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+        /* ── MATCHING COHESIVE BOX FRAMES ── */
+        .content-frame-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+        }
 
-    .section-line .dot-group span {
-      display: block;
-      border-radius: 50%;
-      background: #c8973a;
-      opacity: 0.7;
-    }
+        .matched-frame {
+            background: rgba(253, 250, 244, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 151, 58, 0.18);
+            border-radius: 20px;
+            padding: 50px 55px;
+            box-shadow: 0 12px 40px rgba(156, 126, 45, 0.04);
+            position: relative;
+        }
 
-    .section-line .dot-group span.sm  { width: 4px; height: 4px; }
-    .section-line .dot-group span.md  { width: 6px; height: 6px; opacity: 1; }
+        .matched-frame::before, .matched-frame::after {
+            content: "◆";
+            position: absolute;
+            color: rgba(156, 126, 45, 0.3);
+            font-size: 0.7rem;
+        }
+        .matched-frame::before { top: 15px; left: 20px; }
+        .matched-frame::after { bottom: 15px; right: 20px; }
 
-    /* ── LOVE STORY ── */
-    .love-story {
-      background: rgba(255, 255, 255, 0.8);
-      max-width: 100%;
-      border-top: 1px solid rgba(200,151,58,0.2);
-      border-bottom: 1px solid rgba(200,151,58,0.2);
-    }
+        .matched-frame p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            line-height: 2.1;
+            text-align: center;
+        }
 
-    .love-story .inner {
-      max-width: 1100px;
-      margin: auto;
-      padding: 50px 20px;
-    }
+        .emphasis {
+            font-family: 'Cinzel', serif;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--gold-dark);
+            display: inline-block;
+            border-bottom: 1px dashed var(--gold-mid);
+        }
 
-    .love-story p {
-      text-align: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.2rem;
-      color: #5a5a5a;
-      max-width: 700px;
-      margin: auto;
-      line-height: 2;
-    }
+        /* ── SOFT & ELEGANT EMBEDDED CLOCK ── */
+        .clock-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--gold-dark); 
+            line-height: 1;
+        }
 
-    /* ── COUNTDOWN ── */
-    .countdown-section {
-      text-align: center;
-      background: #fdfaf4;
-      max-width: 100%;
-      padding: 40px 20px;
-      border-bottom: 1px solid rgba(200,151,58,0.1);
-    }
+        .clock-row span {
+            display: inline-block;
+        }
 
-    .countdown-section h2 { color: #9c7e2d; }
+        .clock-row .diamond-divider {
+            color: rgba(156, 126, 45, 0.25);
+            margin: 0 30px;
+            font-size: 0.8rem; 
+            font-weight: normal;
+            vertical-align: middle;
+            position: relative;
+            top: -5px; 
+        }
 
-    .countdown {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      color: #9c7e2d;
-      letter-spacing: 1px;
-    }
+        .labels-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            gap: 75px; 
+        }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #ffffff;
-      text-align: center;
-      padding: 28px 20px;
-      font-size: 0.7rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #9c7e2d;
-      border-top: 1px solid rgba(200,151,58,0.1);
-    }
+        .labels-row div {
+            font-family: 'Cinzel', serif; 
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            font-weight: 600;
+            width: 50px;
+            text-align: center;
+        }
 
-    footer span { color: #c8973a; }
+        footer {
+            background: #ffffff;
+            text-align: center;
+            padding: 50px 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--gold-dark);
+            border-top: 1px solid rgba(200, 151, 58, 0.15);
+            position: relative;
+            z-index: 2;
+        }
 
-    @media (max-width: 768px) {
-      header h1  { font-size: 2.8rem; }
-      h2         { font-size: 2.2rem; }
-      .countdown { font-size: 1rem; }
-      .top-nav { gap: 10px; padding: 20px 10px; }
-      .top-nav a { padding: 10px 20px; font-size: 0.65rem; }
-    }
-  </style>
+        footer span { 
+            color: var(--gold-mid);
+            font-size: 1.1rem;
+        }
+
+        /* ── ANIMATION TIMELINES ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatingNames {
+            from { transform: translateY(0); }
+            to { transform: translateY(-12px); } /* Perfectly fluid drifting movement */
+        }
+
+        /* ── RESPONSIVE DESIGN ── */
+        @media (max-width: 768px) {
+            header {
+                height: 48vh; 
+                padding: 100px 15px 20px 15px;
+            }
+            header h1 { 
+                font-size: 2.2rem; 
+                letter-spacing: 3px;
+                line-height: 1.4;
+                margin-bottom: 15px;
+            }
+            header h1 span { padding: 0 4px; }
+            header p { font-size: 0.8rem; letter-spacing: 4px; }
+            h2 { font-size: 1.5rem !important; letter-spacing: 4px !important; }
+            section { padding: 60px 20px; } 
+            
+            .timeline-separator { margin: 20px 0 25px 0; }
+            .timeline-separator .timeline-line { width: 100px; }
+            
+            .matched-frame { padding: 40px 25px; border-radius: 16px; }
+            .matched-frame p { font-size: 1.15rem; line-height: 1.9; }
+            
+            .clock-row { font-size: 2.6rem; }
+            .clock-row .diamond-divider { margin: 0 16px; font-size: 0.6rem; top: -3px; }
+            .labels-row { gap: 42px; margin-top: 12px; }
+            .labels-row div { font-size: 0.6rem; letter-spacing: 1px; width: 40px; }
+
+            .nav-container { top: 15px; width: 95%; }
+            .top-nav { padding: 10px 12px; }
+            .top-nav a { font-size: 0.85rem; letter-spacing: 1px; padding: 5px 8px; } 
+        }
+
+        @media (max-width: 480px) {
+            header { height: 42vh; padding-top: 90px; } 
+            header h1 { font-size: 7.2vw; letter-spacing: 1.5px; }
+        }
+
+        @media (max-width: 375px) {
+            header p { font-size: 0.7rem; letter-spacing: 3px; }
+            .clock-row { font-size: 2.2rem; }
+            .clock-row .diamond-divider { margin: 0 10px; font-size: 0.5rem; }
+            .labels-row { gap: 28px; }
+            .labels-row div { font-size: 0.55rem; width: 35px; }
+            .top-nav a { font-size: 0.75rem; padding: 4px 6px; }
+        }
+    </style>
 </head>
 <body>
 
-<nav class="top-nav">
-  <a href="events.html">Events</a>
-  <a href="rsvp.html">RSVP</a>
-  <a href="memories.html">Memories</a>
-</nav>
+<div class="nav-container">
+    <nav class="top-nav">
+        <a href="events.html">Events</a>
+        <a href="rsvp.html">RSVP</a>
+        <a href="memories.html">Memories</a>
+    </nav>
+</div>
 
 <header>
-  <h1>Sampreeth &amp; Medini</h1>
-  <p>We Are Getting Married!</p>
-  <div class="header-bottom-bar"></div>
+    <div class="header-content">
+        <!-- Wrapped the h1 inside a separate div to isolate the intro animation from the infinite floating path -->
+        <div class="fade-in-wrapper">
+            <h1>Sampreeth <span>&amp;</span> Medini</h1>
+        </div>
+        <p>We Are Getting Married!</p>
+    </div>
+    <div class="bottom-border"></div>
 </header>
 
-<div class="love-story">
-  <div class="inner">
+<section class="love-story">
     <h2>Our Love Story</h2>
-    <div class="section-line">
-      <div class="seg"></div>
-      <div class="dot-group">
-        <span class="sm"></span>
-        <span class="md"></span>
-        <span class="sm"></span>
-      </div>
-      <div class="seg"></div>
+    <div class="timeline-separator">
+        <div class="timeline-line"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-line reverse"></div>
     </div>
-    <p>
-      What started as a game of fun for his friends turned us in to couple. Late night talks , 
-      looking in to each others in classroom, walking through our stories , yes it started spark in both 
-      of us . Unknowingly both started planting seeds in each other hearts which has grown in to a huge
-      tree now , not just a tree but a fruitful one . Now we have planned to celebrate this relationship 
-      with our culture through ‘Gandharva Vivaha’. Lets celebrate this together
-    </p>
-  </div>
-</div>
+    
+    <div class="content-frame-wrapper">
+        <div class="matched-frame">
+            <p>
+                What started as a lighthearted match by friends quickly turned into our destined path. 
+                Through midnight conversations, stolen glances across the classroom, and sharing the unique stories of our lives, an undeniable spark was born. 
+                Unknowingly, we planted seeds in each other’s hearts that have now grown into a towering, magnificent tree—thriving, dynamic, and full of life.
+                Now, we choose to anchor this love in tradition, celebrating our bond through the sacred ritual of 
+                ‘Gandharva Vivaha’. Join us as we write our next chapter.
+            </p>
+        </div>
+    </div>
+</section>
 
-<div class="countdown-section">
-  <h2>Countdown to Our Wedding</h2>
-  <div class="section-line">
-    <div class="seg"></div>
-    <div class="dot-group">
-      <span class="sm"></span>
-      <span class="md"></span>
-      <span class="sm"></span>
+<section style="padding-top: 0;">
+    <h2>The Countdown</h2>
+    <div class="timeline-separator">
+        <div class="timeline-line"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-line reverse"></div>
     </div>
-    <div class="seg"></div>
-  </div>
-  <div class="countdown" id="countdown"></div>
-</div>
+    
+    <div class="content-frame-wrapper" id="timer-box">
+        <div class="matched-frame">
+            <div class="clock-row">
+                <span id="days">00</span>
+                <span class="diamond-divider">◆</span>
+                <span id="hours">00</span>
+                <span class="diamond-divider">◆</span>
+                <span id="minutes">00</span>
+                <span class="diamond-divider">◆</span>
+                <span id="seconds">00</span>
+            </div>
+            
+            <div class="labels-row">
+                <div>Days</div>
+                <div>Hrs</div>
+                <div>Min</div>
+                <div>Sec</div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wedding-message" style="display:none; font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold-dark); text-align: center; margin-top: 40px; letter-spacing: 2px;">
+        ✨ Our Auspicious Day Has Begun! 🎉
+    </div>
+</section>
 
 <footer>
-  With <span>♥</span> from Sampreeth &amp; Medini &nbsp;·&nbsp; December 2026
+    With <span>♥</span> from Sampreeth &amp; Medini &nbsp;
 </footer>
 
 <script>
-  const weddingDate = new Date("December 4, 2026 09:00:00").getTime();
-  const countdownEl = document.getElementById("countdown");
+    const targetWeddingDate = new Date("December 4, 2026 09:00:00").getTime();
 
-  function updateCountdown() {
-    const distance = weddingDate - Date.now();
-    if (distance < 0) {
-      countdownEl.innerHTML = "Our Wedding Day is Here! 🎉";
-      return;
+    function runTimer() {
+        const now = Date.now();
+        const gap = targetWeddingDate - now;
+
+        if (gap < 0) {
+            document.getElementById("timer-box").style.display = "none";
+            document.getElementById("wedding-message").style.display = "block";
+            return;
+        }
+
+        const d = Math.floor(gap / 86400000);
+        const h = Math.floor((gap % 86400000) / 3600000);
+        const m = Math.floor((gap % 3600000) / 60000);
+        const s = Math.floor((gap % 60000) / 1000);
+
+        document.getElementById("days").innerText = d.toString().padStart(2, '0');
+        document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+        document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
+        document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
     }
-    const days    = Math.floor(distance / 86400000);
-    const hours   = Math.floor((distance % 86400000) / 3600000);
-    const minutes = Math.floor((distance % 3600000) / 60000);
-    const seconds = Math.floor((distance % 60000) / 1000);
-    countdownEl.innerHTML = `${days} Days &nbsp;·&nbsp; ${hours} Hours &nbsp;·&nbsp; ${minutes} Minutes &nbsp;·&nbsp; ${seconds} Seconds`;
-  }
 
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
+    setInterval(runTimer, 1000);
+    runTimer();
 </script>
 </body>
 </html>
