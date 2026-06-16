@@ -189,12 +189,14 @@
     }
       header.hero {
         height: 40vh; /* Reduced from default/inherited */
-        padding: 40px 15px 20px 15px;
+        padding: 40px 15px 5px 15px;
     }
       header.hero h1 { font-size: 1.8rem; letter-spacing: 3px; }
       .nav-container { top: 30px; width: 95%; }
       .top-nav a { font-size: 0.85rem; padding: 5px 8px; }
     }
+     @media (max-width: 480px) {
+      header.hero { height: 35vh; padding-top: 90px; } 
   </style>
 </head>
 <body>
