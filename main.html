@@ -1,197 +1,922 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light">
+
     <title>Sampreeth & Medini Wedding</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+
     <style>
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+
+
         :root {
+
             --primary-bg: #ffffff;
+
             --gold-light: #bf953f;  
+
             --gold-mid: #c8973a;    
+
             --gold-dark: #9c7e2d;   
+
             --text-dark: #4a4a4a;   
+
         }
+
+
 
         body {
+
             font-family: 'Montserrat', sans-serif;
+
             background-color: var(--primary-bg);
+
             color: var(--text-dark);
-            line-height: 1.6;
+
+            line-height: 1.8;
+
             overflow-x: hidden;
+
         }
 
-        /* ── FIXED NAVIGATION ── */
+
+
+        /* ── NAVIGATION BAR (ABSOLUTE: SCROLLS AWAY NATURALLY) ── */
+
         .nav-container {
-            position: fixed;
+
+            position: absolute; 
+
             top: 25px;
+
             left: 50%;
+
             transform: translateX(-50%);
+
             z-index: 1000;
+
             width: 90%;
-            max-width: 500px;
+
+            max-width: 650px;
+
         }
+
+
 
         .top-nav {
+
             background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
+
+            backdrop-filter: blur(15px);
+
+            -webkit-backdrop-filter: blur(15px);
+
             border: 1px solid rgba(200, 151, 58, 0.2);
-            padding: 10px 25px;
-            border-radius: 50px;
+
+            padding: 12px 35px;
+
+            border-radius: 100px;
+
             display: flex;
-            justify-content: space-between;
+
+            justify-content: space-around;
+
             align-items: center;
-            box-shadow: 0 8px 20px rgba(156, 126, 45, 0.08);
+
+            box-shadow: 0 10px 30px rgba(156, 126, 45, 0.1);
+
         }
+
+
 
         .top-nav a {
+
             font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
+
+            font-size: 1.05rem; 
+
             letter-spacing: 2px;
+
             color: var(--gold-dark);
+
             text-decoration: none;
-            text-transform: uppercase;
+
             font-weight: 600;
+
+            padding: 8px 16px;
+
+            transition: all 0.4s ease;
+
+            position: relative;
+
         }
+
+
+
+        .top-nav a::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: 0; left: 50%;
+
+            width: 0; height: 2px;
+
+            background: linear-gradient(90deg, var(--gold-light), var(--gold-dark));
+
+            transition: all 0.3s ease;
+
+            transform: translateX(-50%);
+
+        }
+
+
+
+        .top-nav a:hover { color: var(--gold-light); }
+
+        .top-nav a:hover::after { width: 80%; }
+
+
 
         /* ── HERO SECTION ── */
+
         header {
-            height: 50vh;
+
+            position: relative;
+
+            height: 58vh; 
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             text-align: center;
-            padding: 80px 20px 20px;
+
+            padding: 110px 24px 40px 24px; 
+
             background: linear-gradient(135deg, #f4f7f9 0%, #fcf8f2 50%, #f2f6f8 100%);
+
         }
+
+
+
+        header::before, header .bottom-border {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0; right: 0;
+
+            height: 4px;
+
+            background: linear-gradient(90deg, transparent, var(--gold-mid), #e2b96a, var(--gold-mid), transparent);
+
+            z-index: 2;
+
+        }
+
+        header::before { top: 0; }
+
+        header .bottom-border { bottom: 0; }
+
+
+
+        .header-content {
+
+            z-index: 3;
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 1000px;
+
+        }
+
+
+
+        /* ── THE FIXED ANIMATION LOGIC ── */
+
+        .fade-in-wrapper {
+
+            /* This parent container handles the soft initial entrance fade-in */
+
+            animation: fadeInUp 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+        }
+
+
 
         header h1 {
+
             font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
+
+            font-size: 3.8rem;
+
             font-weight: 400;
-            letter-spacing: 4px;
-            color: var(--gold-dark);
+
+            letter-spacing: 6px;
+
+            color: var(--gold-dark); 
+
+            line-height: 1.4;
+
+            margin-bottom: 22px;
+
+            text-transform: uppercase;
+
+            white-space: nowrap; 
+
+            display: inline-block;
+
+            /* This child h1 safely handles the smooth, endless floating motion without conflict */
+
             animation: floatingNames 4s ease-in-out infinite alternate;
+
         }
+
+
+
+        header h1 span {
+
+            font-family: 'Playfair Display', serif;
+
+            font-style: italic;
+
+            text-transform: lowercase;
+
+            letter-spacing: 0;
+
+            padding: 0 8px;
+
+            color: var(--gold-dark); 
+
+        }
+
+
 
         header p {
+
             font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            letter-spacing: 5px;
+
+            font-size: 1rem;
+
+            letter-spacing: 7px;
+
             text-transform: uppercase;
-            margin-top: 15px;
-            color: var(--gold-dark);
+
+            color: var(--gold-dark); 
+
+            font-weight: 500;
+
+            animation: fadeInUp 2s cubic-bezier(0.16, 1, 0.3, 1);
+
         }
 
-        /* ── CONTENT SECTIONS ── */
-        section { padding: 50px 20px; max-width: 800px; margin: auto; }
+
+
+        section {
+
+            padding: 80px 20px; 
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+
+        /* ── HEADERS ── */
 
         h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+
+            font-family: 'Cinzel', serif !important;
+
+            font-size: 2rem !important; 
+
+            font-weight: 400 !important; 
+
             text-align: center;
-            letter-spacing: 4px;
-            color: var(--gold-dark);
-            text-transform: uppercase;
-            margin-bottom: 20px;
+
+            letter-spacing: 6px !important; 
+
+            color: var(--gold-dark); 
+
+            text-transform: uppercase !important;
+
         }
+
+
+
+        /* ── UNIFIED TIMELINE SEPARATOR ── */
+
+        .timeline-separator {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 25px 0 35px 0;
+
+        }
+
+        .timeline-separator .timeline-line {
+
+            height: 1px;
+
+            width: 160px;
+
+            background: linear-gradient(90deg, transparent, var(--gold-mid), var(--gold-light));
+
+        }
+
+        .timeline-separator .timeline-line.reverse {
+
+            background: linear-gradient(90deg, var(--gold-light), var(--gold-mid), transparent);
+
+        }
+
+        .timeline-separator .timeline-dot {
+
+            width: 5px;
+
+            height: 5px;
+
+            background-color: var(--gold-dark);
+
+            border-radius: 50%;
+
+            margin: 0 15px;
+
+        }
+
+
+
+        /* ── MATCHING COHESIVE BOX FRAMES ── */
+
+        .content-frame-wrapper {
+
+            max-width: 850px;
+
+            margin: 0 auto;
+
+        }
+
+
 
         .matched-frame {
-            background: rgba(253, 250, 244, 0.6);
-            border: 1px solid rgba(200, 151, 58, 0.15);
-            padding: 30px 25px;
-            border-radius: 16px;
-            text-align: center;
+
+            background: rgba(253, 250, 244, 0.65);
+
+            backdrop-filter: blur(10px);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(200, 151, 58, 0.18);
+
+            border-radius: 20px;
+
+            padding: 50px 55px;
+
+            box-shadow: 0 12px 40px rgba(156, 126, 45, 0.04);
+
+            position: relative;
+
         }
+
+
+
+        .matched-frame::before, .matched-frame::after {
+
+            content: "◆";
+
+            position: absolute;
+
+            color: rgba(156, 126, 45, 0.3);
+
+            font-size: 0.7rem;
+
+        }
+
+        .matched-frame::before { top: 15px; left: 20px; }
+
+        .matched-frame::after { bottom: 15px; right: 20px; }
+
+
 
         .matched-frame p {
+
             font-family: 'Cormorant Garamond', serif;
+
             font-style: italic;
-            font-size: 1.2rem;
-            line-height: 1.8;
+
+            font-size: 1.4rem;
+
+            color: var(--text-dark);
+
+            line-height: 2.1;
+
+            text-align: center;
+
         }
+
+
+
+        .emphasis {
+
+            font-family: 'Cinzel', serif;
+
+            font-style: normal;
+
+            font-weight: 600;
+
+            color: var(--gold-dark);
+
+            display: inline-block;
+
+            border-bottom: 1px dashed var(--gold-mid);
+
+        }
+
+
+
+        /* ── SOFT & ELEGANT EMBEDDED CLOCK ── */
 
         .clock-row {
+
             display: flex;
+
+            align-items: center;
+
             justify-content: center;
+
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+
+            font-size: 4rem;
+
+            font-weight: 600;
+
+            color: var(--gold-dark); 
+
+            line-height: 1;
+
+        }
+
+
+
+        .clock-row span {
+
+            display: inline-block;
+
+        }
+
+
+
+        .clock-row .diamond-divider {
+
+            color: rgba(156, 126, 45, 0.25);
+
+            margin: 0 30px;
+
+            font-size: 0.8rem; 
+
+            font-weight: normal;
+
+            vertical-align: middle;
+
+            position: relative;
+
+            top: -5px; 
+
+        }
+
+
+
+        .labels-row {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 15px;
+
+            gap: 75px; 
+
+        }
+
+
+
+        .labels-row div {
+
+            font-family: 'Cinzel', serif; 
+
+            font-size: 0.75rem;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
             color: var(--gold-dark);
-            gap: 15px;
+
+            font-weight: 600;
+
+            width: 50px;
+
+            text-align: center;
+
         }
 
-        /* ── ANIMATIONS ── */
+
+
+        footer {
+
+            background: #ffffff;
+
+            text-align: center;
+
+            padding: 50px 20px;
+
+            font-family: 'Cinzel', serif;
+
+            font-size: 0.8rem;
+
+            letter-spacing: 4px;
+
+            color: var(--gold-dark);
+
+            border-top: 1px solid rgba(200, 151, 58, 0.15);
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+
+        footer span { 
+
+            color: var(--gold-mid);
+
+            font-size: 1.1rem;
+
+        }
+
+
+
+        /* ── ANIMATION TIMELINES ── */
+
+        @keyframes fadeInUp {
+
+            from { opacity: 0; transform: translateY(30px); }
+
+            to { opacity: 1; transform: translateY(0); }
+
+        }
+
+
+
         @keyframes floatingNames {
+
             from { transform: translateY(0); }
-            to { transform: translateY(-10px); }
+
+            to { transform: translateY(-12px); } /* Perfectly fluid drifting movement */
+
         }
 
-        /* ── RESPONSIVE ── */
+
+
+        /* ── RESPONSIVE DESIGN ── */
+
         @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            .matched-frame { padding: 20px; }
-            .nav-container { top: 15px; }
-            .top-nav { padding: 8px 15px; }
-            .top-nav a { font-size: 0.75rem; }
+
+            header {
+
+                height: 48vh; 
+
+                padding: 100px 15px 20px 15px;
+
+            }
+
+            header h1 { 
+
+                font-size: 2.2rem; 
+
+                letter-spacing: 3px;
+
+                line-height: 1.4;
+
+                margin-bottom: 15px;
+
+            }
+
+            header h1 span { padding: 0 4px; }
+
+            header p { font-size: 0.8rem; letter-spacing: 4px; }
+
+            h2 { font-size: 1.5rem !important; letter-spacing: 4px !important; }
+
+            section { padding: 60px 20px; } 
+
+            
+
+            .timeline-separator { margin: 20px 0 25px 0; }
+
+            .timeline-separator .timeline-line { width: 100px; }
+
+            
+
+            .matched-frame { padding: 40px 25px; border-radius: 16px; }
+
+            .matched-frame p { font-size: 1.15rem; line-height: 1.9; }
+
+            
+
+            .clock-row { font-size: 2.6rem; }
+
+            .clock-row .diamond-divider { margin: 0 16px; font-size: 0.6rem; top: -3px; }
+
+            .labels-row { gap: 42px; margin-top: 12px; }
+
+            .labels-row div { font-size: 0.6rem; letter-spacing: 1px; width: 40px; }
+
+
+
+            .nav-container { top: 15px; width: 95%; }
+
+            .top-nav { padding: 10px 12px; }
+
+            .top-nav a { font-size: 0.85rem; letter-spacing: 1px; padding: 5px 8px; } 
+
         }
+
+
+
+        @media (max-width: 480px) {
+
+            header { height: 42vh; padding-top: 90px; } 
+
+            header h1 { font-size: 7.2vw; letter-spacing: 1.5px; }
+
+        }
+
+
+
+        @media (max-width: 375px) {
+
+            header p { font-size: 0.7rem; letter-spacing: 3px; }
+
+            .clock-row { font-size: 2.2rem; }
+
+            .clock-row .diamond-divider { margin: 0 10px; font-size: 0.5rem; }
+
+            .labels-row { gap: 28px; }
+
+            .labels-row div { font-size: 0.55rem; width: 35px; }
+
+            .top-nav a { font-size: 0.75rem; padding: 4px 6px; }
+
+        }
+
     </style>
+
 </head>
+
 <body>
 
-    <div class="nav-container">
-        <nav class="top-nav">
-            <a href="events.html">Events</a>
-            <a href="rsvp.html">RSVP</a>
-            <a href="memories.html">Memories</a>
-        </nav>
+
+
+<div class="nav-container">
+
+    <nav class="top-nav">
+
+        <a href="events.html">Events</a>
+
+        <a href="rsvp.html">RSVP</a>
+
+        <a href="memories.html">Memories</a>
+
+    </nav>
+
+</div>
+
+
+
+<header>
+
+    <div class="header-content">
+
+        <!-- Wrapped the h1 inside a separate div to isolate the intro animation from the infinite floating path -->
+
+        <div class="fade-in-wrapper">
+
+            <h1>Sampreeth <span>&amp;</span> Medini</h1>
+
+        </div>
+
+        <p>We Are Getting Married!</p>
+
     </div>
 
-    <header>
-        <div>
-            <h1>Sampreeth <span>&amp;</span> Medini</h1>
-            <p>We Are Getting Married!</p>
-        </div>
-    </header>
+    <div class="bottom-border"></div>
 
-    <section>
-        <h2>Our Love Story</h2>
+</header>
+
+
+
+<section class="love-story">
+
+    <h2>Our Love Story</h2>
+
+    <div class="timeline-separator">
+
+        <div class="timeline-line"></div>
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-line reverse"></div>
+
+    </div>
+
+    
+
+    <div class="content-frame-wrapper">
+
         <div class="matched-frame">
-            <p>What started as a lighthearted match by friends quickly turned into our destined path. Join us as we celebrate our bond through the sacred ritual of ‘Gandharva Vivaha’.</p>
-        </div>
-    </section>
 
-    <section>
-        <h2>The Countdown</h2>
-        <div class="matched-frame" id="timer-box">
+            <p>
+
+                What started as a lighthearted match by friends quickly turned into our destined path. 
+
+                Through midnight conversations, stolen glances across the classroom, and sharing the unique stories of our lives, an undeniable spark was born. 
+
+                Unknowingly, we planted seeds in each other’s hearts that have now grown into a towering, magnificent tree—thriving, dynamic, and full of life.
+
+                Now, we choose to anchor this love in tradition, celebrating our bond through the sacred ritual of 
+
+                ‘Gandharva Vivaha’. Join us as we write our next chapter.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section style="padding-top: 0;">
+
+    <h2>The Countdown</h2>
+
+    <div class="timeline-separator">
+
+        <div class="timeline-line"></div>
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-line reverse"></div>
+
+    </div>
+
+    
+
+    <div class="content-frame-wrapper" id="timer-box">
+
+        <div class="matched-frame">
+
             <div class="clock-row">
-                <span id="days">00</span>:
-                <span id="hours">00</span>:
-                <span id="minutes">00</span>:
-                <span id="seconds">00</span>
-            </div>
-        </div>
-    </section>
 
-    <script>
-        const targetDate = new Date("December 4, 2026 09:00:00").getTime();
-        function updateTimer() {
-            const now = Date.now();
-            const gap = targetDate - now;
-            const d = Math.floor(gap / 86400000);
-            const h = Math.floor((gap % 86400000) / 3600000);
-            const m = Math.floor((gap % 3600000) / 60000);
-            const s = Math.floor((gap % 60000) / 1000);
-            document.getElementById("days").innerText = d.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = h.toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
-            document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
+                <span id="days">00</span>
+
+                <span class="diamond-divider">◆</span>
+
+                <span id="hours">00</span>
+
+                <span class="diamond-divider">◆</span>
+
+                <span id="minutes">00</span>
+
+                <span class="diamond-divider">◆</span>
+
+                <span id="seconds">00</span>
+
+            </div>
+
+            
+
+            <div class="labels-row">
+
+                <div>Days</div>
+
+                <div>Hrs</div>
+
+                <div>Min</div>
+
+                <div>Sec</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <div id="wedding-message" style="display:none; font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold-dark); text-align: center; margin-top: 40px; letter-spacing: 2px;">
+
+        ✨ Our Auspicious Day Has Begun! 🎉
+
+    </div>
+
+</section>
+
+
+
+<footer>
+
+    With <span>♥</span> from Sampreeth &amp; Medini &nbsp;
+
+</footer>
+
+
+
+<script>
+
+    const targetWeddingDate = new Date("December 4, 2026 09:00:00").getTime();
+
+
+
+    function runTimer() {
+
+        const now = Date.now();
+
+        const gap = targetWeddingDate - now;
+
+
+
+        if (gap < 0) {
+
+            document.getElementById("timer-box").style.display = "none";
+
+            document.getElementById("wedding-message").style.display = "block";
+
+            return;
+
         }
-        setInterval(updateTimer, 1000);
-        updateTimer();
-    </script>
+
+
+
+        const d = Math.floor(gap / 86400000);
+
+        const h = Math.floor((gap % 86400000) / 3600000);
+
+        const m = Math.floor((gap % 3600000) / 60000);
+
+        const s = Math.floor((gap % 60000) / 1000);
+
+
+
+        document.getElementById("days").innerText = d.toString().padStart(2, '0');
+
+        document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+
+        document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
+
+        document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
+
+    }
+
+
+
+    setInterval(runTimer, 1000);
+
+    runTimer();
+
+</script>
+
 </body>
+
 </html>
+
