@@ -6,7 +6,7 @@
   <title>Sampreeth & Medini Wedding</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     body, html {
       height: 100%;
@@ -19,20 +19,20 @@
       display: flex;
       width: 100%;
       height: 100%;
+      /* Forces color consistency across devices */
+      color-interpolation-filters: sRGB;
     }
 
-    /* ── ENHANCED LEFT SECTION (Desktop) ── */
     .left {
       position: relative;
       width: 50%;
       height: 100%;
       background: url('image/WhatsApp Image 2026-02-21 at 10.56.32 PM.jpeg') no-repeat center center / cover;
       overflow: hidden;
-      /* Smooth cinematic zoom animation on load */
       animation: imageReveal 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      will-change: transform;
     }
 
-    /* Premium Vignette & Shimmer Overlay for Text Contrast */
     .left::before {
       content: '';
       position: absolute;
@@ -47,14 +47,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center; /* Centered dynamically for a balanced look */
+      justify-content: center;
       padding: 50px;
       z-index: 5;
     }
 
     .left-name {
       font-family: 'Great Vibes', cursive;
-      font-size: 4.5rem; /* Increased size for premium presence */
+      font-size: 4.5rem;
       color: #ffffff;
       line-height: 1.2;
       text-align: center;
@@ -63,7 +63,6 @@
       letter-spacing: 1px;
     }
 
-    /* Styled elegant ampersand separator */
     .left-name span {
       display: block;
       font-size: 2.5rem;
@@ -74,20 +73,19 @@
       color: #f7f3eb;
     }
 
-    /* ── VERTICAL DIVIDER ── */
     .divider-line {
       width: 1px;
       height: 100%;
-      background: linear-gradient(to bottom, transparent, #d4af37, transparent);
+      background: #d4af37;
       flex-shrink: 0;
       z-index: 10;
     }
 
-    /* ── RIGHT SECTION ── */
     .right {
       width: 50%;
       height: 100%;
-      background: radial-gradient(circle at center, #ffffff 0%, #f7f3eb 100%);
+      /* Removed gradient for solid color to ensure mobile consistency */
+      background-color: #f7f3eb;
       position: relative;
       display: flex;
       align-items: center;
@@ -131,6 +129,8 @@
 
     .btn {
       display: inline-block;
+      -webkit-appearance: none;
+      appearance: none;
       font-family: 'Josefin Sans', sans-serif;
       font-size: 0.75rem;
       font-weight: 600;
@@ -150,7 +150,6 @@
       transform: translateY(-3px);
     }
 
-    /* ── ANIMATIONS ── */
     @keyframes imageReveal {
       from { transform: scale(1.08); opacity: 0.8; }
       to { transform: scale(1); opacity: 1; }
@@ -166,51 +165,16 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── MOBILE OPTIMIZATION ── */
     @media (max-width: 768px) {
       body, html { overflow-y: auto; height: auto; }
-      
-      .split-wrap { 
-        flex-direction: column; 
-        height: auto;
-      }
-
-      .left { 
-        width: 100%; 
-        height: 65vh; /* Formatted to leave proportional room for text below */
-        background-position: center center;
-      }
-
-      .left-content {
-        padding: 40px 20px;
-        align-items: center; 
-        width: 100%;
-      }
-
-      .left-name { 
-        font-size: 3.8rem;
-        text-align: center;
-      }
-      
-      .left-name span {
-        font-size: 2rem;
-      }
-
-      .divider-line { 
-        width: 100%; 
-        height: 1px; 
-      }
-
-      .right { 
-        width: 100%; 
-        min-height: 45vh; 
-        padding: 60px 24px;
-      }
-
-      .btn {
-        width: 100%;
-        padding: 18px 0;
-      }
+      .split-wrap { flex-direction: column; height: auto; }
+      .left { width: 100%; height: 65vh; }
+      .left-content { padding: 40px 20px; }
+      .left-name { font-size: 3.8rem; }
+      .left-name span { font-size: 2rem; }
+      .divider-line { width: 100%; height: 1px; }
+      .right { width: 100%; min-height: 45vh; padding: 60px 24px; }
+      .btn { width: 100%; padding: 18px 0; }
     }
   </style>
 </head>
