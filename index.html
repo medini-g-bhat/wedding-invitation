@@ -10,7 +10,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     :root {
-      color-scheme: light; /* This ensures system UI elements also stay light */
+      color-scheme: light;
       --primary-bg: #ffffff;
       --gold-light: #bf953f;  
       --gold-mid: #c8973a;    
@@ -18,34 +18,20 @@
       --text-dark: #4a4a4a;   
     }
 
-    /* Force P3 color space for modern mobile devices */
-@supports (color: color(display-p3 1 1 1)) {
-    :root {
-        --gold-light: color(display-p3 0.749 0.584 0.247);
-        --gold-mid: color(display-p3 0.784 0.592 0.227);
-        --gold-dark: color(display-p3 0.611 0.494 0.176);
-        --text-dark: color(display-p3 0.290 0.290 0.290);
+    @supports (color: color(display-p3 1 1 1)) {
+        :root {
+            --gold-light: color(display-p3 0.749 0.584 0.247);
+            --gold-mid: color(display-p3 0.784 0.592 0.227);
+            --gold-dark: color(display-p3 0.611 0.494 0.176);
+            --text-dark: color(display-p3 0.290 0.290 0.290);
+        }
     }
-}
-    header {
-    /* Use solid colors that aren't quite as 'airy' to prevent OS interference */
-    background: linear-gradient(135deg, #f0f4f7 0%, #faf6f0 50%, #eff4f6 100%);
-}
-    body, html {
-      height: 100%;
-      font-family: 'Josefin Sans', sans-serif;
-      overflow-x: hidden;
-      background-color: #fdfbf7;
-    }
+    header { background: linear-gradient(135deg, #f0f4f7 0%, #faf6f0 50%, #eff4f6 100%); }
+    body, html { height: 100%; font-family: 'Josefin Sans', sans-serif; overflow-x: hidden; background-color: #fdfbf7; }
 
-    .split-wrap {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      /* Forces color consistency across devices */
-      color-interpolation-filters: sRGB;
-    }
+    .split-wrap { display: flex; width: 100%; height: 100%; color-interpolation-filters: sRGB; }
 
+    /* --- LEFT SIDE (PRESERVED) --- */
     .left {
       position: relative;
       width: 50%;
@@ -55,7 +41,6 @@
       animation: imageReveal 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       will-change: transform;
     }
-
     .left::before {
       content: '';
       position: absolute;
@@ -63,141 +48,45 @@
       background: linear-gradient(135deg, rgba(44, 34, 18, 0.45) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(44, 34, 18, 0.55) 100%);
       z-index: 2;
     }
+    .left-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 50px; z-index: 5; }
+    .left-name { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: #ffffff; line-height: 1.2; text-align: center; text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.5); animation: fadeInDown 1.8s cubic-bezier(0.16, 1, 0.3, 1); letter-spacing: 1px; }
+    .left-name span { display: block; font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; margin: 5px 0; opacity: 0.9; color: #f7f3eb; }
+    .divider-line { width: 1px; height: 100%; background: #d4af37; flex-shrink: 0; z-index: 10; }
 
-    .left-content {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 50px;
-      z-index: 5;
-    }
-
-    .left-name {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4.5rem;
-      color: #ffffff;
-      line-height: 1.2;
-      text-align: center;
-      text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.5);
-      animation: fadeInDown 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-      letter-spacing: 1px;
-    }
-
-    .left-name span {
-      display: block;
-      font-size: 2.5rem;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      margin: 5px 0;
-      opacity: 0.9;
-      color: #f7f3eb;
-    }
-
-    .divider-line {
-      width: 1px;
-      height: 100%;
-      background: #d4af37;
-      flex-shrink: 0;
-      z-index: 10;
-    }
-
+    /* --- RIGHT SIDE (UPDATED) --- */
     .right {
-      width: 50%;
-      height: 100%;
-      /* Removed gradient for solid color to ensure mobile consistency */
-      background-color: #f7f3eb;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+      width: 50%; height: 100%;
+      background: url('image/images.jfif') no-repeat center center / cover;
+      position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;
     }
-
-    .corner-decoration {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      border: 1px solid #d4af37;
-      opacity: 0.2;
-    }
-    .top-right { top: 30px; right: 30px; border-left: none; border-bottom: none; }
-    .bottom-left { bottom: 30px; left: 30px; border-right: none; border-top: none; }
-
-    .right-content {
-      position: relative;
-      z-index: 5;
-      text-align: center;
-      padding: 40px;
-      max-width: 450px;
-      animation: fadeInUp 1.5s ease;
-    }
-
-    .right-content h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.5rem;
-      color: #9c7e2d;
-      margin-bottom: 20px;
-    }
-
-    .right-content p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.25rem;
-      color: #5a554a;
-      margin-bottom: 40px;
-    }
-
+    .right::before { content: ''; position: absolute; inset: 0; background: rgba(44, 34, 18, 0.5); z-index: 2; }
+    .right-content { position: relative; z-index: 5; text-align: center; color: #fff; padding: 60px; animation: fadeInUp 1.5s ease; }
+    .title { font-family: 'Great Vibes', cursive; font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+    .subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.4rem; opacity: 0.95; margin-bottom: 40px; line-height: 1.8; }
     .btn {
-      display: inline-block;
-      -webkit-appearance: none;
-      appearance: none;
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      padding: 18px 45px;
-      border: 1px solid #d4af37;
-      background: #fff;
-      color: #9c7e2d;
-      text-decoration: none;
-      transition: all 0.4s ease;
+      display: inline-block; padding: 15px 40px; border: 1px solid #fff; color: #fff; text-decoration: none;
+      font-family: 'Josefin Sans', sans-serif; font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .btn:hover { background: #fff; color: #7a664a; transform: translateY(-5px); }
 
-    .btn:hover {
-      background: #d4af37;
-      color: #fff;
-      transform: translateY(-3px);
-    }
-
-    @keyframes imageReveal {
-      from { transform: scale(1.08); opacity: 0.8; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* ANIMATIONS & RESPONSIVE */
+    @keyframes imageReveal { from { transform: scale(1.08); opacity: 0.8; } to { transform: scale(1); opacity: 1; } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 768px) {
       body, html { overflow-y: auto; height: auto; }
       .split-wrap { flex-direction: column; height: auto; }
       .left { width: 100%; height: 65vh; }
-      .left-content { padding: 40px 20px; }
       .left-name { font-size: 3.8rem; }
       .left-name span { font-size: 2rem; }
       .divider-line { width: 100%; height: 1px; }
-      .right { width: 100%; min-height: 45vh; padding: 60px 24px; }
-      .btn { width: 100%; padding: 18px 0; }
+      .right { width: 100%; min-height: 45vh; }
+      .title { font-size: 2.8rem; }
+      .subtitle { font-size: 1.2rem; }
+      .right-content { padding: 30px; }
+      .btn { font-size: 0.65rem; padding: 12px 25px; letter-spacing: 2px; }
     }
   </style>
 </head>
@@ -213,12 +102,9 @@
   <div class="divider-line"></div>
 
   <div class="right">
-    <div class="corner-decoration top-right"></div>
-    <div class="corner-decoration bottom-left"></div>
-
     <div class="right-content">
-      <h1>You Are Invited!</h1>
-      <p>Join us as we celebrate our love and begin a beautiful new journey together.</p>
+      <div class="title">You Are Invited!</div>
+      <div class="subtitle">Join us as we celebrate our love and begin a beautiful new journey together.</div>
       <a href="main.html" class="btn">Join the Celebration</a>
     </div>
   </div>
